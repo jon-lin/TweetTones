@@ -1568,10 +1568,11 @@ exports.logger = _logger2['default'];
 "use strict";
 const APIUtil = {
 
-  fetchTweets: () => (
+  fetchTweets: (twitter_user) => (
     $.ajax({
       url: "tweets/index",
       method: "GET",
+      data: {twitter_user}
     })
   ),
 
@@ -1584,7 +1585,7 @@ const APIUtil = {
   )
 
 };
-/* unused harmony export APIUtil */
+/* harmony export (immutable) */ __webpack_exports__["a"] = APIUtil;
 
 
 
@@ -1752,40 +1753,50 @@ class Modal extends __WEBPACK_IMPORTED_MODULE_0_module_js__["a" /* default */] {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_util_js__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_modal_js__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tweets_processor_js__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_modal_js__ = __webpack_require__(6);
+
 
 
 
 $(document).ready(
   () => {
-    let html =  `<div class="splash-modal">
-                    <div class="splashTitle">TweetTones</div>
-                    <div class="splashSubtitle">Gauge the emotional contours of tweets, hundreds at a time</div>
-                    <img src='/tweettones.png' class='splashLogo'/>
-                    <div class="splashbottom3elements">
-                      <div>Search by Twitter User:</div>
-                      <input type="text"></input>
-                      <button class="submitInput">Submit</button>
-                      <button class="submitDemo">Demo</button>
-                    </div>
-                </div>`;
+    let html =   `<div class="splash-modal">
+                      <div class="splashTitle">TweetTones</div>
+                      <div class="splashSubtitle">Gauge the emotional contours of tweets, hundreds at a time</div>
+                      <img src='/tweettones.png' class='splashLogo'/>
+                      <div class="splashbottom3elements">
+                        <div>Search by Twitter User:</div>
+                        <input class="twitterUser" type="text"></input>
+                        <button class="submitInput">Submit</button>
+                        <button class="submitDemo">Demo</button>
+                      </div>
+                    </div>`;
 
-    let modal = new __WEBPACK_IMPORTED_MODULE_1_modal_js__["a" /* default */](html, {
+    let modal = new __WEBPACK_IMPORTED_MODULE_2_modal_js__["a" /* default */](html, {
         containerEl: document.getElementById('modals-container'),
         activeClass: 'modal-active',
+        onClickOutside: () => {}
     });
 
-    $('.submitInput').click((e) => {
-      modal.hide()
-      .then( )
-      .then(() => $('.splash-modal').css('display',' none'))
-    })
+    modal.show();
 
-    modal.show()
+    $('.submitInput').click(() => {
+
+      __WEBPACK_IMPORTED_MODULE_0__api_util_js__["a" /* APIUtil */].fetchTweets($('.twitterUser').val())
+      .then(tweets => {
+
+        modal.hide().then(() => $('.splash-modal').css('display',' none'));
+        __WEBPACK_IMPORTED_MODULE_1__tweets_processor_js__["a" /* TweetsProcessor */].displayTweetsAsEmbeds(tweets);
+
+      });
+    });
+
   }
 );
 
-
+// <div class="middleSplashModalContainer">
+// </div>
 
 // onClickOutside: console.log('hey')
 // modal.show();
@@ -26170,6 +26181,31 @@ process.umask = function() { return 0; };
 /***/ (function(module, exports) {
 
 /* (ignored) */
+
+/***/ }),
+/* 32 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const TweetsProcessor = {
+
+  displayTweetsAsEmbeds: (tweets) => {
+    tweets.forEach(tweet => {
+      twttr.widgets.createTweet(tweet.id_str, document.getElementById('tweetsContainer'));
+    });
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = TweetsProcessor;
+
+
+// working dynamic embedCode for X number of posts from user's timeline
+// let embedCode =  `<a class="twitter-timeline"
+//                   href="https://twitter.com/${tweets[0]['user']['screen_name']}"
+//                   data-tweet-limit="${tweets.length}">
+//                   Tweets by ${tweets[0]['user']['screen_name']}</a>
+//                   <script async src="//platform.twitter.com/widgets.js"
+//                   charset="utf-8"></script>`;
+
 
 /***/ })
 /******/ ]);

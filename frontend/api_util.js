@@ -1,9 +1,10 @@
 export const APIUtil = {
 
-  fetchTweets: () => (
+  fetchTweets: (twitter_user) => (
     $.ajax({
       url: "tweets/index",
       method: "GET",
+      data: {twitter_user}
     })
   ),
 
