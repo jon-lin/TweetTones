@@ -3,6 +3,12 @@ export const TweetsProcessor = {
   displayTweetsAsEmbeds: (tweets) => {
     tweets.forEach(tweet => {
       twttr.widgets.createTweet(tweet.id_str, document.getElementById('tweetsContainer'));
+
+      $('#slicktest').slick({
+          dots: true,
+          speed: 500
+        });
+        
     });
   }
 }

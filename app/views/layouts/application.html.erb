@@ -20,7 +20,7 @@
 
       return t;
     }(document, "script", "twitter-wjs"));</script>
-    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900', '//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
@@ -32,6 +32,15 @@
       <div class="inner">Goodbye</div>
     </div>
 
+    <div id="slicktest">
+      <div><h3>1</h3></div>
+      <div><h3>2</h3></div>
+      <div><h3>3</h3></div>
+      <div><h3>4</h3></div>
+      <div><h3>5</h3></div>
+      <div><h3>6</h3></div>
+    </div>
+
     <div id="tweetsContainer">
     </div>
 
@@ -39,6 +48,8 @@
     </div>
 
     <%= yield %>
+
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
   </body>
 </html>
 

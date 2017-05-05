@@ -35,6 +35,17 @@ $(document).ready(
       });
     });
 
+    $('.submitDemo').click(() => {
+
+      APIUtil.fetchTweets('realDonaldTrump')
+      .then(tweets => {
+
+        modal.hide().then(() => $('.splash-modal').css('display',' none'));
+        TweetsProcessor.displayTweetsAsEmbeds(tweets);
+
+      });
+    });
+
   }
 );
 

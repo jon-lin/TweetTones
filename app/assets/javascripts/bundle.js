@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -425,7 +425,7 @@ function flush() {
 function attemptVertx() {
   try {
     var r = require;
-    var vertx = __webpack_require__(31);
+    var vertx = __webpack_require__(32);
     vertxNext = vertx.runOnLoop || vertx.runOnContext;
     return useVertxTimer();
   } catch (e) {
@@ -1448,7 +1448,7 @@ return Promise;
 })));
 //# sourceMappingURL=es6-promise.map
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(30), __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(31), __webpack_require__(2)))
 
 /***/ }),
 /* 4 */
@@ -1469,11 +1469,11 @@ var _exception = __webpack_require__(1);
 
 var _exception2 = _interopRequireDefault(_exception);
 
-var _helpers = __webpack_require__(11);
+var _helpers = __webpack_require__(12);
 
-var _decorators = __webpack_require__(9);
+var _decorators = __webpack_require__(10);
 
-var _logger = __webpack_require__(19);
+var _logger = __webpack_require__(20);
 
 var _logger2 = _interopRequireDefault(_logger);
 
@@ -1594,8 +1594,39 @@ const APIUtil = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_module_js__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(25);
+const TweetsProcessor = {
+
+  displayTweetsAsEmbeds: (tweets) => {
+    tweets.forEach(tweet => {
+      twttr.widgets.createTweet(tweet.id_str, document.getElementById('tweetsContainer'));
+
+      $('#slicktest').slick({
+          dots: true,
+          speed: 500
+        });
+        
+    });
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = TweetsProcessor;
+
+
+// working dynamic embedCode for X number of posts from user's timeline
+// let embedCode =  `<a class="twitter-timeline"
+//                   href="https://twitter.com/${tweets[0]['user']['screen_name']}"
+//                   data-tweet-limit="${tweets.length}">
+//                   Tweets by ${tweets[0]['user']['screen_name']}</a>
+//                   <script async src="//platform.twitter.com/widgets.js"
+//                   charset="utf-8"></script>`;
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_module_js__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
 
 
@@ -1747,14 +1778,14 @@ class Modal extends __WEBPACK_IMPORTED_MODULE_0_module_js__["a" /* default */] {
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_util_js__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tweets_processor_js__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_modal_js__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tweets_processor_js__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_modal_js__ = __webpack_require__(7);
 
 
 
@@ -1784,6 +1815,17 @@ $(document).ready(
     $('.submitInput').click(() => {
 
       __WEBPACK_IMPORTED_MODULE_0__api_util_js__["a" /* APIUtil */].fetchTweets($('.twitterUser').val())
+      .then(tweets => {
+
+        modal.hide().then(() => $('.splash-modal').css('display',' none'));
+        __WEBPACK_IMPORTED_MODULE_1__tweets_processor_js__["a" /* TweetsProcessor */].displayTweetsAsEmbeds(tweets);
+
+      });
+    });
+
+    $('.submitDemo').click(() => {
+
+      __WEBPACK_IMPORTED_MODULE_0__api_util_js__["a" /* APIUtil */].fetchTweets('realDonaldTrump')
       .then(tweets => {
 
         modal.hide().then(() => $('.splash-modal').css('display',' none'));
@@ -1848,7 +1890,7 @@ $(document).ready(
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1870,7 +1912,7 @@ var base = _interopRequireWildcard(_handlebarsBase);
 // Each of these augment the Handlebars object. No need to setup here.
 // (This is done to easily share code between commonjs and browse envs)
 
-var _handlebarsSafeString = __webpack_require__(22);
+var _handlebarsSafeString = __webpack_require__(23);
 
 var _handlebarsSafeString2 = _interopRequireDefault(_handlebarsSafeString);
 
@@ -1882,11 +1924,11 @@ var _handlebarsUtils = __webpack_require__(0);
 
 var Utils = _interopRequireWildcard(_handlebarsUtils);
 
-var _handlebarsRuntime = __webpack_require__(21);
+var _handlebarsRuntime = __webpack_require__(22);
 
 var runtime = _interopRequireWildcard(_handlebarsRuntime);
 
-var _handlebarsNoConflict = __webpack_require__(20);
+var _handlebarsNoConflict = __webpack_require__(21);
 
 var _handlebarsNoConflict2 = _interopRequireDefault(_handlebarsNoConflict);
 
@@ -1921,7 +1963,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1933,7 +1975,7 @@ exports.registerDefaultDecorators = registerDefaultDecorators;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _decoratorsInline = __webpack_require__(10);
+var _decoratorsInline = __webpack_require__(11);
 
 var _decoratorsInline2 = _interopRequireDefault(_decoratorsInline);
 
@@ -1944,7 +1986,7 @@ function registerDefaultDecorators(instance) {
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1980,7 +2022,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1992,31 +2034,31 @@ exports.registerDefaultHelpers = registerDefaultHelpers;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _helpersBlockHelperMissing = __webpack_require__(12);
+var _helpersBlockHelperMissing = __webpack_require__(13);
 
 var _helpersBlockHelperMissing2 = _interopRequireDefault(_helpersBlockHelperMissing);
 
-var _helpersEach = __webpack_require__(13);
+var _helpersEach = __webpack_require__(14);
 
 var _helpersEach2 = _interopRequireDefault(_helpersEach);
 
-var _helpersHelperMissing = __webpack_require__(14);
+var _helpersHelperMissing = __webpack_require__(15);
 
 var _helpersHelperMissing2 = _interopRequireDefault(_helpersHelperMissing);
 
-var _helpersIf = __webpack_require__(15);
+var _helpersIf = __webpack_require__(16);
 
 var _helpersIf2 = _interopRequireDefault(_helpersIf);
 
-var _helpersLog = __webpack_require__(16);
+var _helpersLog = __webpack_require__(17);
 
 var _helpersLog2 = _interopRequireDefault(_helpersLog);
 
-var _helpersLookup = __webpack_require__(17);
+var _helpersLookup = __webpack_require__(18);
 
 var _helpersLookup2 = _interopRequireDefault(_helpersLookup);
 
-var _helpersWith = __webpack_require__(18);
+var _helpersWith = __webpack_require__(19);
 
 var _helpersWith2 = _interopRequireDefault(_helpersWith);
 
@@ -2033,7 +2075,7 @@ function registerDefaultHelpers(instance) {
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2079,7 +2121,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2180,7 +2222,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2212,7 +2254,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2248,7 +2290,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2281,7 +2323,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2300,7 +2342,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2340,7 +2382,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2394,7 +2436,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2422,7 +2464,7 @@ module.exports = exports['default'];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2736,7 +2778,7 @@ function executeDecorators(fn, prog, container, depths, data, blockParams) {
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2758,7 +2800,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**!
@@ -7602,16 +7644,16 @@ return /******/ (function(modules) { // webpackBootstrap
 ;
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Create a simple path alias to allow browserify to resolve
 // the runtime on a supported path.
-module.exports = __webpack_require__(8)['default'];
+module.exports = __webpack_require__(9)['default'];
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -24700,18 +24742,18 @@ module.exports = __webpack_require__(8)['default'];
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(29)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(30)(module)))
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_resource_manager_js__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_resource_manager_js__ = __webpack_require__(28);
 
 
 var Promise = __webpack_require__(3).Promise;
-var runtime = __webpack_require__(24);
+var runtime = __webpack_require__(25);
 
 /**
  * Takes a value and separates the number and unit into a key/value map.
@@ -25253,16 +25295,16 @@ class Module {
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_whatwg_fetch__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_whatwg_fetch__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_whatwg_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_whatwg_fetch__);
 
 __webpack_require__(3).polyfill(); // needed for fetch
 
-var Handlebars = __webpack_require__(23);
+var Handlebars = __webpack_require__(24);
 /**
  * Makes sure that a path is converted to an array.
  * @param paths
@@ -25491,7 +25533,7 @@ class ResourceManager {
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports) {
 
 (function(self) {
@@ -25963,7 +26005,7 @@ class ResourceManager {
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -25991,7 +26033,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -26177,35 +26219,10 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
-
-/***/ }),
-/* 32 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-const TweetsProcessor = {
-
-  displayTweetsAsEmbeds: (tweets) => {
-    tweets.forEach(tweet => {
-      twttr.widgets.createTweet(tweet.id_str, document.getElementById('tweetsContainer'));
-    });
-  }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = TweetsProcessor;
-
-
-// working dynamic embedCode for X number of posts from user's timeline
-// let embedCode =  `<a class="twitter-timeline"
-//                   href="https://twitter.com/${tweets[0]['user']['screen_name']}"
-//                   data-tweet-limit="${tweets.length}">
-//                   Tweets by ${tweets[0]['user']['screen_name']}</a>
-//                   <script async src="//platform.twitter.com/widgets.js"
-//                   charset="utf-8"></script>`;
-
 
 /***/ })
 /******/ ]);
