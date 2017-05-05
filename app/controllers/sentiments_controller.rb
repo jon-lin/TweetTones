@@ -2,7 +2,6 @@ class SentimentsController < ApplicationController
   def index
     input = params[:input]
     url = "https://gateway.watsonplatform.net/tone-analyzer/api"
-    debugger
     response = Excon.get(url + "/v3/tone",
     :headers  => {
       "Content-Type"            => "text/plain",

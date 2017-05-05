@@ -3,13 +3,23 @@
   <head>
     <title>TweetTones</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
-    HELLO APPLICATION.HTML.ERB IS SHOWING
+    <h2>Greetings</h2>
+    <div class="container">
+      <div class="inner">Hello</div>
+      <div class="inner">Goodbye</div>
+    </div>
+
+    <div id="modals-container">
+    </div>
+
     <%= yield %>
   </body>
 </html>
+
+<% #<a class="twitter-timeline" href="https://twitter.com/realDonaldTrump">Tweets by realDonaldTrump</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script> %>
