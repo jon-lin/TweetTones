@@ -8,8 +8,8 @@ export const TweetsProcessor = {
     tweets.forEach(tweet => {
       tweetsHash[tweet.id_str] =  {id: tweet.id_str, timestamp: tweet.created_at, body: tweet.text};
 
-      let elForInsertion = `<div><h3 id=${tweet.id_str}></h3></div>`;
-      $('.single-tweet-in-carousel').append(elForInsertion);
+      let elForInsertion = `<div id=${tweet.id_str}></div>`;
+      $('.tweets-carousel-container').append(elForInsertion);
 
       twttr.widgets.createTweet(tweet.id_str, document.getElementById(tweet.id_str));
     });
@@ -18,10 +18,10 @@ export const TweetsProcessor = {
 
       //jQuery to select for the tweet id of
       //whichever tweet is currently selected in the carousel
-      // $('.slick-slide.slick-current.slick-active h3 twitterwidget').attr('data-tweet-id')
+      // $('.slick-slide.slick-current.slick-active twitterwidget').attr('data-tweet-id')
 
-      $(".single-tweet-in-carousel").slick({
-        dots: true
+      $('.tweets-carousel-container').slick({
+        // dots: true
       });
   }
 }

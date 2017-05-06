@@ -7,6 +7,6 @@ class TweetsController < ApplicationController
       config.access_token_secret = ENV['twitter_access_token_secret']
     end
 
-    render json: client.user_timeline(params[:twitter_user], count: 200)
+    render json: client.user_timeline(params[:twitter_user], count: 3)
   end
 end
