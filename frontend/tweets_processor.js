@@ -1,13 +1,14 @@
+import { APIUtil } from './api_util.js';
+
 class TweetsProcessor {
   constructor(tweets) {
     this.tweets = tweets;
     this.tweetsHash = {};
-    this.displayTweetsAsEmbeds = this.displayTweetsAsEmbeds.bind(this);
-    this.displayTweetsAsEmbeds(tweets);
+    this.displayTweetsAsEmbeds();
   }
 
-  displayTweetsAsEmbeds(tweets) {
-    tweets.forEach(tweet => {
+  displayTweetsAsEmbeds() {
+    this.tweets.forEach(tweet => {
       this.tweetsHash[tweet.id_str] =  {id: tweet.id_str, timestamp: tweet.created_at, body: tweet.text};
 
       let elForInsertion = `<div id=${tweet.id_str}></div>`;
@@ -19,11 +20,25 @@ class TweetsProcessor {
       $('.tweets-carousel-container').toggle(true);
 
       $('.tweets-carousel-container').slick({});
+
+      this.addSentimentData();
   }
+
+  addSentimentData() {
+    for (let key in this.tweetsHash) {
+      APIUtil.fetchSentiments(this.tweetsHash[key]['body'])
+        .then(sentimentData => this.tweetsHash[key]['sentimentData'] = sentimentData);
+    }
+
+    console.log(this.tweetsHash);
+  }
+
 }
 
 export default TweetsProcessor;
 
+// what tweetsprocessor looked like as a constant:
+//
 // export const TweetsProcessor = {
 //
 //   displayTweetsAsEmbeds: (tweets) => {

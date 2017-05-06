@@ -33,8 +33,7 @@ $(document).ready(
 
         modal.hide().then(() => $('.splash-modal').css('display',' none'));
 
-        debugger
-        TweetsProcessor.new(tweets);
+        new TweetsProcessor(tweets);
       });
     });
 
@@ -45,7 +44,6 @@ $(document).ready(
 
         modal.hide().then(() => $('.splash-modal').css('display',' none'));
 
-        debugger
         new TweetsProcessor(tweets);
       });
     });
