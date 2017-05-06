@@ -8,7 +8,7 @@ $(document).ready(
 
     let html =   `<div class="splash-modal">
                       <div class="splashTitle">TweetTones</div>
-                      <div class="splashSubtitle">Gauge the emotional contours of tweets, hundreds at a time</div>
+                      <div class="splashSubtitle">Analyze the sentiment of hundreds of tweets from any user.</div>
                       <img src='/tweettones.png' class='splashLogo'/>
                       <div class="splashbottom3elements">
                         <div>Search by Twitter User:</div>
