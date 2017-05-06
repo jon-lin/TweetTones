@@ -8,7 +8,7 @@ export const TweetsProcessor = {
           dots: true,
           speed: 500
         });
-        
+
     });
   }
 }
