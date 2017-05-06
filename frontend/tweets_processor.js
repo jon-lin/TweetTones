@@ -4,6 +4,7 @@ class TweetsProcessor {
   constructor(tweets) {
     this.tweets = tweets;
     this.tweetsHash = {};
+    // this.selectedTweetId = null;
     this.displayTweetsAsEmbeds();
   }
 
@@ -64,12 +65,31 @@ class TweetsProcessor {
   }
 
   displaySentimentData() {
-    
+    // setInterval(() => (
+    //   this.selectedTweetId = $('.slick-slide.slick-current.slick-active twitterwidget').attr('data-tweet-id')
+    // ), 500)
+
+    $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-next.slick-arrow')
+      .click(() => {
+        let selectedTweetId = $('.slick-slide.slick-current.slick-active twitterwidget').attr('data-tweet-id');
+        let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
+        $('#replaceSentiment').replaceWith(elToAddToScreen);
+      });
+
+    $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-prev.slick-arrow')
+      .click(() => {
+        let selectedTweetId = $('.slick-slide.slick-current.slick-active twitterwidget').attr('data-tweet-id');
+        let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
+        $('#replaceSentiment').replaceWith(elToAddToScreen);
+      });
   }
 
 }
 
 export default TweetsProcessor;
+
+// $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-next.slick-arrow')
+// $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-prev.slick-arrow')
 
 // what tweetsprocessor looked like as a constant:
 //
