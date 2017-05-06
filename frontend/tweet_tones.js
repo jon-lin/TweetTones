@@ -1,5 +1,5 @@
 import { APIUtil } from './api_util.js';
-import { TweetsProcessor } from './tweets_processor.js';
+import TweetsProcessor from './tweets_processor.js';
 import Modal from 'modal-js';
 
 $(document).ready(
@@ -32,8 +32,9 @@ $(document).ready(
       .then(tweets => {
 
         modal.hide().then(() => $('.splash-modal').css('display',' none'));
-        TweetsProcessor.displayTweetsAsEmbeds(tweets);
 
+        debugger
+        TweetsProcessor.new(tweets);
       });
     });
 
@@ -43,8 +44,9 @@ $(document).ready(
       .then(tweets => {
 
         modal.hide().then(() => $('.splash-modal').css('display',' none'));
-        TweetsProcessor.displayTweetsAsEmbeds(tweets);
 
+        debugger
+        new TweetsProcessor(tweets);
       });
     });
 
