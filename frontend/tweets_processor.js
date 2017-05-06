@@ -1,5 +1,3 @@
-// import { slick } from 'slick';
-
 export const TweetsProcessor = {
 
   displayTweetsAsEmbeds: (tweets) => {
@@ -23,6 +21,8 @@ export const TweetsProcessor = {
       $('.tweets-carousel-container').slick({
         // dots: true
       });
+
+      debugger
   }
 }
 
