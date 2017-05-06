@@ -20,25 +20,23 @@
 
       return t;
     }(document, "script", "twitter-wjs"));</script>
-    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900', '//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900', '//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css', '//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
 
   <body>
     <h2>Greetings</h2>
-    <div class="container">
-      <div class="inner">Hello</div>
-      <div class="inner">Goodbye</div>
-    </div>
 
-    <div id="slicktest">
-      <div><h3>1</h3></div>
-      <div><h3>2</h3></div>
-      <div><h3>3</h3></div>
-      <div><h3>4</h3></div>
-      <div><h3>5</h3></div>
-      <div><h3>6</h3></div>
+    <div class='tweets-carousel-container'>
+      <div class='single-tweet-in-carousel'>
+        <div><h3 id="hitest"></h3></div>
+        <div><h3>2</h3></div>
+        <div><h3>3</h3></div>
+        <div><h3>4</h3></div>
+        <div><h3>5</h3></div>
+        <div><h3>6</h3></div>
+      </div>
     </div>
 
     <div id="tweetsContainer">
@@ -48,9 +46,9 @@
     </div>
 
     <%= yield %>
-
-    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+    <%= javascript_include_tag '//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js' %>
   </body>
 </html>
 
 <% #<a class="twitter-timeline" href="https://twitter.com/realDonaldTrump">Tweets by realDonaldTrump</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script> %>
+<% # <div class='tweets-carousel-outermost-container'></div> %>

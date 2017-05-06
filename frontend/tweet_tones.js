@@ -4,6 +4,8 @@ import Modal from 'modal-js';
 
 $(document).ready(
   () => {
+    $('.tweets-carousel-container').toggle();
+
     let html =   `<div class="splash-modal">
                       <div class="splashTitle">TweetTones</div>
                       <div class="splashSubtitle">Gauge the emotional contours of tweets, hundreds at a time</div>
