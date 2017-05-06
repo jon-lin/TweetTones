@@ -27,10 +27,44 @@ class TweetsProcessor {
   addSentimentData() {
     for (let key in this.tweetsHash) {
       APIUtil.fetchSentiments(this.tweetsHash[key]['body'])
-        .then(sentimentData => this.tweetsHash[key]['sentimentData'] = sentimentData);
+        .then(sentimentData => {
+          let setTweetsHash = this.tweetsHash[key];
+
+          let emotion_tone = sentimentData.document_tone.tone_categories[0].tones;
+          setTweetsHash['emotion_tone'] = {};
+          let setTweetsHashEmotion = setTweetsHash['emotion_tone'];
+
+          setTweetsHashEmotion['anger'] = emotion_tone[0].score;
+          setTweetsHashEmotion['disgust'] = emotion_tone[1].score;
+          setTweetsHashEmotion['fear'] = emotion_tone[2].score;
+          setTweetsHashEmotion['joy'] = emotion_tone[3].score;
+          setTweetsHashEmotion['sadness'] = emotion_tone[4].score;
+
+          let language_tone = sentimentData.document_tone.tone_categories[1].tones;
+          setTweetsHash['language_tone'] = {};
+          let setTweetsHashLang = setTweetsHash['language_tone'];
+
+          setTweetsHashLang['analytical'] = language_tone[0].score;
+          setTweetsHashLang['confident'] = language_tone[1].score;
+          setTweetsHashLang['tentative'] = language_tone[2].score;
+
+          let social_tone = sentimentData.document_tone.tone_categories[2].tones;
+          setTweetsHash['social_tone'] = {};
+          let setTweetsHashSocial = setTweetsHash['social_tone'];
+
+          setTweetsHashSocial['openness'] = social_tone[0].score;
+          setTweetsHashSocial['conscientiousness'] = social_tone[1].score;
+          setTweetsHashSocial['extraversion'] = social_tone[2].score;
+          setTweetsHashSocial['agreeableness'] = social_tone[3].score;
+          setTweetsHashSocial['emotionalRange'] = social_tone[4].score;
+        });
     }
 
-    console.log(this.tweetsHash);
+    this.displaySentimentData();
+  }
+
+  displaySentimentData() {
+    
   }
 
 }
