@@ -15,18 +15,27 @@ class TweetsProcessor {
       let elForInsertion = `<div id=${tweet.id_str}></div>`;
       $('.tweets-carousel-container').append(elForInsertion);
 
+      //The line below is dangerous in that you're calling an async function
+      //inside a forEach loop. What if the loop doesn't wait for each
+      //async function to finish before moving onto the next iteration?
       twttr.widgets.createTweet(tweet.id_str, document.getElementById(tweet.id_str));
     });
+    
+    $('.tweets-carousel-container').slick({
+      adaptiveHeight: true
+    });
 
-      $('.tweets-carousel-container').toggle(true);
+    $('body > div.tweets-carousel-container.slick-initialized.slick-slider > div').attr('style', 'height: 300px');
 
-      $('.tweets-carousel-container').slick({});
-
-      this.addSentimentData();
+    this.addSentimentData();
   }
 
   addSentimentData() {
     for (let key in this.tweetsHash) {
+
+      //The line below is dangerous in that you're calling an async function
+      //inside a forEach loop. What if the loop doesn't wait for each
+      //async function to finish before moving onto the next iteration?
       APIUtil.fetchSentiments(this.tweetsHash[key]['body'])
         .then(sentimentData => {
           let setTweetsHash = this.tweetsHash[key];
@@ -65,34 +74,53 @@ class TweetsProcessor {
   }
 
   displaySentimentData() {
-    // setInterval(() => (
-    //   this.selectedTweetId = $('.slick-slide.slick-current.slick-active twitterwidget').attr('data-tweet-id')
-    // ), 500)
 
-    setTimeout(() => {
-      let selectedTweetId = $('.slick-slide.slick-current.slick-active twitterwidget').attr('data-tweet-id');
+    setInterval(() => {
+      let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
       let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
       $('#replaceSentiment').replaceWith(elToAddToScreen);
     }, 500);
 
-    $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-next.slick-arrow')
-      .click(() => {
-        let selectedTweetId = $('.slick-slide.slick-current.slick-active twitterwidget').attr('data-tweet-id');
-        let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
-        $('#replaceSentiment').replaceWith(elToAddToScreen);
-      });
-
-    $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-prev.slick-arrow')
-      .click(() => {
-        let selectedTweetId = $('.slick-slide.slick-current.slick-active twitterwidget').attr('data-tweet-id');
-        let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
-        $('#replaceSentiment').replaceWith(elToAddToScreen);
-      });
+    // $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-next.slick-arrow')
+    //   .click(() => {
+    //     let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
+    //     let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
+    //     $('#replaceSentiment').replaceWith(elToAddToScreen);
+    //   });
+    //
+    // $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-prev.slick-arrow')
+    //   .click(() => {
+    //     let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
+    //     let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
+    //     $('#replaceSentiment').replaceWith(elToAddToScreen);
+    //   });
   }
 
 }
 
 export default TweetsProcessor;
+
+//this doesn't solve the carousel initial load problem, taking into account async:
+// let idx = 0;
+//
+// let iterateThroughTweetsOnAsyncSuccess = (idx) => {
+//   debugger
+//   let currentTweet = this.tweets[idx];
+//   this.tweetsHash[currentTweet.id_str] =  {id: currentTweet.id_str, timestamp: currentTweet.created_at, body: currentTweet.text};
+//
+//   let elForInsertion = `<div id=${currentTweet.id_str}></div>`;
+//   $('.tweets-carousel-container').append(elForInsertion);
+//
+//   twttr.widgets.createTweet(currentTweet.id_str, document.getElementById(currentTweet.id_str))
+//     .then(() => {
+//       if (idx < this.tweets.length - 1) {
+//         debugger
+//         iterateThroughTweetsOnAsyncSuccess(idx + 1);
+//       }
+//     });
+// }
+//
+// iterateThroughTweetsOnAsyncSuccess(idx);
 
 // $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-next.slick-arrow')
 // $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-prev.slick-arrow')
