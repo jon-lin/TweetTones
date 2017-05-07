@@ -1,4 +1,5 @@
 import { APIUtil } from './api_util.js';
+import * as d3 from "d3";
 
 class TweetsProcessor {
   constructor(tweets) {
@@ -20,12 +21,10 @@ class TweetsProcessor {
       //async function to finish before moving onto the next iteration?
       twttr.widgets.createTweet(tweet.id_str, document.getElementById(tweet.id_str));
     });
-    
-    $('.tweets-carousel-container').slick({
-      adaptiveHeight: true
-    });
 
-    $('body > div.tweets-carousel-container.slick-initialized.slick-slider > div').attr('style', 'height: 300px');
+    $('.tweets-carousel-container').slick({});
+
+    $('.tweets-carousel-container').slick('slickSetOption', 'adaptiveHeight', true);
 
     this.addSentimentData();
   }
@@ -75,26 +74,30 @@ class TweetsProcessor {
 
   displaySentimentData() {
 
-    setInterval(() => {
+    setTimeout(() => {
       let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
       let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
       $('#replaceSentiment').replaceWith(elToAddToScreen);
-    }, 500);
+    }, 1000);
 
-    // $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-next.slick-arrow')
-    //   .click(() => {
-    //     let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
-    //     let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
-    //     $('#replaceSentiment').replaceWith(elToAddToScreen);
-    //   });
-    //
-    // $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-prev.slick-arrow')
-    //   .click(() => {
-    //     let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
-    //     let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
-    //     $('#replaceSentiment').replaceWith(elToAddToScreen);
-    //   });
+    $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-next.slick-arrow')
+      .click(() => {
+        let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
+        let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
+        $('#replaceSentiment').replaceWith(elToAddToScreen);
+      });
+
+    $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-prev.slick-arrow')
+      .click(() => {
+        let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
+        let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
+        $('#replaceSentiment').replaceWith(elToAddToScreen);
+      });
+
+      
   }
+
+
 
 }
 

@@ -8,6 +8,7 @@
     "test": "test"
   },
   "dependencies": {
+    "d3": "^4.8.0",
     "modal-js": "^3.0.0",
     "slick-carousel": "^1.6.0"
   },
