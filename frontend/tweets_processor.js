@@ -7,11 +7,16 @@ class TweetsProcessor {
     this.tweetsHash = {};
     // this.selectedTweetId = null;
     this.displayTweetsAsEmbeds();
+    this.data = [];
   }
 
   displayTweetsAsEmbeds() {
+    //DOMParser is used to convert UTF-8 symbols in tweet to plain text
+    let parser = new DOMParser;
+
     this.tweets.forEach(tweet => {
-      this.tweetsHash[tweet.id_str] =  {id: tweet.id_str, timestamp: tweet.created_at, body: tweet.text};
+      let modText = parser.parseFromString(tweet.text, 'text/html').body.textContent;
+      this.tweetsHash[tweet.id_str] =  {id: tweet.id_str, timestamp: tweet.created_at, body: modText};
 
       let elForInsertion = `<div id=${tweet.id_str}></div>`;
       $('.tweets-carousel-container').append(elForInsertion);
@@ -24,6 +29,8 @@ class TweetsProcessor {
 
     $('.tweets-carousel-container').slick({});
 
+    //adaptiveHeight is set on after the carousel is initiated because otherwise,
+    //the slick draggable div won't initially adjust its height for the first slide
     $('.tweets-carousel-container').slick('slickSetOption', 'adaptiveHeight', true);
 
     this.addSentimentData();
@@ -66,19 +73,20 @@ class TweetsProcessor {
           setTweetsHashSocial['extraversion'] = social_tone[2].score;
           setTweetsHashSocial['agreeableness'] = social_tone[3].score;
           setTweetsHashSocial['emotionalRange'] = social_tone[4].score;
-        });
+
+          this.displaySentimentData();
+      });
+
     }
 
-    this.displaySentimentData();
+
   }
 
   displaySentimentData() {
 
-    setTimeout(() => {
       let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
       let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
       $('#replaceSentiment').replaceWith(elToAddToScreen);
-    }, 1000);
 
     $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-next.slick-arrow')
       .click(() => {
@@ -94,7 +102,24 @@ class TweetsProcessor {
         $('#replaceSentiment').replaceWith(elToAddToScreen);
       });
 
-      
+      window.tweetsHash = this.tweetsHash;
+
+      // debugger
+
+  //     setTimeout(() => {
+  //       let data = this.tweetsHash[$('.slick-slide.slick-current.slick-active').attr('id')].emotion_tone;
+  //       debugger
+  //     }, 2000);
+  //
+  //     debugger
+  //
+  //     d3.select('.emotion-tone-barchart')
+  //       .selectAll('div')
+  //         .data(data)
+  //       .enter().append('div')
+  //         .style('width', function(d) { return d * 10 + "px"; })
+  //         .text(function(d) {return d; });
+  //
   }
 
 
