@@ -4,6 +4,8 @@ import Modal from 'modal-js';
 
 $(document).ready(
   () => {
+    $('#navbar').toggle();
+
     let html =   `<div class="splash-modal">
                       <div class="splashTitle">TweetTones</div>
                       <div class="splashSubtitle">Analyze the sentiment of any Twitter user's recent tweets.</div>
@@ -32,6 +34,7 @@ $(document).ready(
           modal.hide().then(() => $('.splash-modal').css('display',' none'));
           $('#emotion-linechart').css('width', '800');
           $('#emotion-linechart').css('height', '600');
+          $('#navbar').toggle();
 
           new TweetsProcessor(tweets);
         });
@@ -46,6 +49,7 @@ $(document).ready(
         modal.hide().then(() => $('.splash-modal').css('display',' none'));
         $('#emotion-linechart').css('width', '800');
         $('#emotion-linechart').css('height', '600');
+        $('#navbar').toggle();
 
         new TweetsProcessor(tweets);
       });

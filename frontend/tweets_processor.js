@@ -6,7 +6,6 @@ class TweetsProcessor {
   constructor(tweets) {
     this.tweets = tweets;
     this.tweetsHash = {};
-    // this.selectedTweetId = null;
     this.displayTweetsAsEmbeds();
     this.data = [];
   }
@@ -26,8 +25,6 @@ class TweetsProcessor {
       let elForInsertion = `<div id=${this.tweets[i].id_str}></div>`;
       $('.tweets-carousel-container').append(elForInsertion);
     }
-
-    // window.tweets = this.tweets;
 
     let idx = 0;
 
@@ -96,15 +93,15 @@ class TweetsProcessor {
           setTweetsHashSocial['emotional range'] = social_tone[4].score;
 
           count++;
-          if (count === this.tweets.length) { this.displaySentimentData(); }
+          if (count === this.tweets.length) {
+            this.displaySentimentData();
+            this.displayLineGraphs();
+          }
       });
     }
   }
 
   displaySentimentData() {
-    // debugger
-    // window.tweetsHash = this.tweetsHash;
-
     let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
     let emotionToneData = this.tweetsHash[selectedTweetId].emotion_tone;
 
@@ -237,8 +234,6 @@ class TweetsProcessor {
           }
       }
     });
-
-    this.displayLineGraphs();
   }
 
   displayLineGraphs() {
@@ -273,12 +268,12 @@ class TweetsProcessor {
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
-                pointBorderColor: "rgba(75,192,192,1)",
-                pointBackgroundColor: "#fff",
+                pointBorderColor: "rgba(223, 20, 20, 0.62)",
+                pointBackgroundColor: "rgba(223, 20, 20, 0.62)",
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
-                pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointHoverBackgroundColor: "rgba(223, 20, 20, 0.62)",
+                pointHoverBorderColor: "rgba(223, 20, 20, 0.62)",
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
@@ -295,12 +290,12 @@ class TweetsProcessor {
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
-                pointBorderColor: "rgba(75,192,192,1)",
-                pointBackgroundColor: "#fff",
+                pointBorderColor: "rgba(68, 20, 223, 0.54)",
+                pointBackgroundColor: "rgba(68, 20, 223, 0.54)",
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
-                pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointHoverBackgroundColor: "rgba(68, 20, 223, 0.54)",
+                pointHoverBorderColor: "rgba(68, 20, 223, 0.54)",
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
@@ -317,12 +312,12 @@ class TweetsProcessor {
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
-                pointBorderColor: "rgba(75,192,192,1)",
-                pointBackgroundColor: "#fff",
+                pointBorderColor: "rgba(20, 223, 68, 0.7)",
+                pointBackgroundColor: "rgba(20, 223, 68, 0.7)",
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
-                pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointHoverBackgroundColor: "rgba(20, 223, 68, 0.7)",
+                pointHoverBorderColor: "rgba(20, 223, 68, 0.7)",
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
@@ -339,12 +334,12 @@ class TweetsProcessor {
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
-                pointBorderColor: "rgba(75,192,192,1)",
-                pointBackgroundColor: "#fff",
+                pointBorderColor: "rgba(219, 198, 10, 0.55)",
+                pointBackgroundColor: "rgba(219, 198, 10, 0.55)",
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
-                pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointHoverBackgroundColor: "rgba(219, 198, 10, 0.55)",
+                pointHoverBorderColor: "rgba(219, 198, 10, 0.55)",
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
@@ -361,12 +356,12 @@ class TweetsProcessor {
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
-                pointBorderColor: "rgba(75,192,192,1)",
-                pointBackgroundColor: "#fff",
+                pointBorderColor: "rgba(3, 119, 154, 0.51)",
+                pointBackgroundColor: "rgba(3, 119, 154, 0.51)",
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
-                pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointHoverBackgroundColor: "rgba(3, 119, 154, 0.51)",
+                pointHoverBorderColor: "rgba(3, 119, 154, 0.51)",
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
@@ -378,7 +373,27 @@ class TweetsProcessor {
 
     let emotionLineChart = new Chart(ctx1, {
         type: 'line',
-        data: emotionLineData
+        data: emotionLineData,
+        options: {
+          scales: {
+            xAxes: [{
+              type: 'time',
+              time: {
+                displayFormats: {
+                   'millisecond': 'MM/DD/YY',
+                   'second': 'MM/DD/YY',
+                   'minute': 'MM/DD/YY',
+                   'hour': 'MM/DD/YY',
+                   'day': 'MM/DD/YY',
+                   'week': 'MM/DD/YY',
+                   'month': 'MM/DD/YY',
+                   'quarter': 'MM/DD/YY',
+                   'year': 'MM/DD/YY',
+                }
+              }
+            }]
+          }
+        }
       });
 
     $('#spinner').remove();

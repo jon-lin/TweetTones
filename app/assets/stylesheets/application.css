@@ -196,6 +196,25 @@ body > div.tweets-carousel-container.slick-initialized.slick-slider > div {
   max-height: 600px;
 }
 
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+#navbar div:last-child > * {
+  margin-right: 10px;
+}
+
+#navbar > * {
+  margin-left: 5px;
+  /*width: 500px;*/
+}
+
+#navbar div:first-child a:last-child {
+  margin-left: 15px;
+}
+
  /*some possible future modal setttings*/
 
  /*.modals-container {
