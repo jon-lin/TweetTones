@@ -11,8 +11,12 @@ class TweetsProcessor {
     this.data = [];
   }
 
+  spinner() {
+    $('body').append($(`<div id='spinner'><img src="/loading.svg" /></div>`));
+  }
+
   displayTweetsAsEmbeds() {
-    // new Spinner();
+    this.spinner();
     //DOMParser is used to convert UTF-8 symbols in tweet to plain text
     let parser = new DOMParser;
     for (let i = 0; i < this.tweets.length; i++) {
@@ -233,7 +237,7 @@ class TweetsProcessor {
       }
     });
 
-
+    $('#spinner').remove();
   }
 }
 

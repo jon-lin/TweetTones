@@ -133,12 +133,29 @@
  }
 
  .tweets-carousel-container {
-  /*position: relative;*/
   margin: 0 auto;
   padding: 40px;
   width: 40%;
-  /*color: #333;*/
-  /*background: #419be0;*/
+}
+
+#spinner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: #387A9A;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+#spinner img {
+  position: absolute;
+  left: calc(50% - 111px);
+  top: calc(50% - 111px);
+  background-color: #387A9A;
 }
 
 .slick-slide {
