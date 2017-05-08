@@ -30,6 +30,8 @@ $(document).ready(
         .then(tweets => {
 
           modal.hide().then(() => $('.splash-modal').css('display',' none'));
+          $('#emotion-linechart').css('width', '800');
+          $('#emotion-linechart').css('height', '600');
 
           new TweetsProcessor(tweets);
         });
@@ -42,6 +44,8 @@ $(document).ready(
       .then(tweets => {
 
         modal.hide().then(() => $('.splash-modal').css('display',' none'));
+        $('#emotion-linechart').css('width', '800');
+        $('#emotion-linechart').css('height', '600');
 
         new TweetsProcessor(tweets);
       });
@@ -49,6 +53,13 @@ $(document).ready(
 
   }
 );
+//
+// $('#emotion-tone-barchart').css('width', '500');
+// $('#emotion-tone-barchart').css('height', '400');
+// $('#language-tone-barchart').css('width', '500');
+// $('#language-tone-barchart').css('height', '400');
+// $('#social-tone-barchart').css('width', '500');
+// $('#social-tone-barchart').css('height', '400');
 
 // <div class="middleSplashModalContainer">
 // </div>

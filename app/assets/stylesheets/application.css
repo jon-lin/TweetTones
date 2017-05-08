@@ -176,9 +176,24 @@ body > div.tweets-carousel-container.slick-initialized.slick-slider > div {
 
 .all-barcharts > * {
   max-height: 400px;
-  max-width: 400px;
+  max-width: 500px;
   margin: 15px;
   border-radius: 10px;
+}
+
+.all-linecharts {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.all-linecharts > * {
+  margin: 20px;
+}
+
+#emotion-linechart {
+  max-width: 800px;
+  max-height: 600px;
 }
 
  /*some possible future modal setttings*/

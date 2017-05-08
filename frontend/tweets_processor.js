@@ -27,7 +27,7 @@ class TweetsProcessor {
       $('.tweets-carousel-container').append(elForInsertion);
     }
 
-    window.tweets = this.tweets;
+    // window.tweets = this.tweets;
 
     let idx = 0;
 
@@ -102,6 +102,9 @@ class TweetsProcessor {
   }
 
   displaySentimentData() {
+    // debugger
+    // window.tweetsHash = this.tweetsHash;
+
     let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
     let emotionToneData = this.tweetsHash[selectedTweetId].emotion_tone;
 
@@ -235,17 +238,37 @@ class TweetsProcessor {
       }
     });
 
-    let ctx4 = $("#emotion-linechart");
+    this.displayLineGraphs();
+  }
+
+  displayLineGraphs() {
+    let ctx1 = $("#emotion-linechart");
+
+    let labels = [],
+        angerData = [],
+        disgustData = [],
+        fearData = [],
+        joyData = [],
+        sadnessData = []
+
+    for (let key in this.tweetsHash) {
+      labels.unshift(this.tweetsHash[key].timestamp);
+      angerData.unshift(this.tweetsHash[key].emotion_tone.anger);
+      disgustData.unshift(this.tweetsHash[key].emotion_tone.disgust);
+      fearData.unshift(this.tweetsHash[key].emotion_tone.fear);
+      joyData.unshift(this.tweetsHash[key].emotion_tone.joy);
+      sadnessData.unshift(this.tweetsHash[key].emotion_tone.sadness);
+    }
 
     let emotionLineData = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        labels: labels,
         datasets: [
             {
-                label: "My First dataset",
+                label: "Anger",
                 fill: false,
                 lineTension: 0.1,
-                backgroundColor: "rgba(75,192,192,0.4)",
-                borderColor: "rgba(75,192,192,1)",
+                backgroundColor: "rgba(223, 20, 20, 0.62)",
+                borderColor: "rgba(223, 20, 20, 0.62)",
                 borderCapStyle: 'butt',
                 borderDash: [],
                 borderDashOffset: 0.0,
@@ -259,20 +282,109 @@ class TweetsProcessor {
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
-                data: [65, 59, 80, 81, 56, 55, 40],
-                spanGaps: false,
+                data: angerData,
+                spanGaps: false
+            },
+            {
+                label: "Disgust",
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: "rgba(68, 20, 223, 0.54)",
+                borderColor: "rgba(68, 20, 223, 0.54)",
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: "rgba(75,192,192,1)",
+                pointBackgroundColor: "#fff",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: disgustData,
+                spanGaps: false
+            },
+            {
+                label: "Fear",
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: "rgba(20, 223, 68, 0.7)",
+                borderColor: "rgba(20, 223, 68, 0.7)",
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: "rgba(75,192,192,1)",
+                pointBackgroundColor: "#fff",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: fearData,
+                spanGaps: false
+            },
+            {
+                label: "Joy",
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: "rgba(219, 198, 10, 0.55)",
+                borderColor: "rgba(219, 198, 10, 0.55)",
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: "rgba(75,192,192,1)",
+                pointBackgroundColor: "#fff",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: joyData,
+                spanGaps: false
+            },
+            {
+                label: "Sadness",
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: "rgba(3, 119, 154, 0.51)",
+                borderColor: "rgba(3, 119, 154, 0.51)",
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: "rgba(75,192,192,1)",
+                pointBackgroundColor: "#fff",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: sadnessData,
+                spanGaps: false
             }
         ]
     };
 
-    let emotionLineChart = new Chart(ctx4, {
+    let emotionLineChart = new Chart(ctx1, {
         type: 'line',
         data: emotionLineData
       });
 
-
     $('#spinner').remove();
   }
+
+
 }
 
 export default TweetsProcessor;
