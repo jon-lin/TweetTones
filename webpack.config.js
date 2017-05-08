@@ -12,7 +12,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: [/\.jsx?$/],
+        test: [/\.js?$/],
         exclude: /(node_modules)/,
         loader: 'babel-loader',
         query: {
@@ -26,6 +26,6 @@ module.exports = {
     fs: "empty"
   },
   resolve: {
-    extensions: ['.js', '.jsx', '*']
+    extensions: ['.js', '*']
   }
 };
