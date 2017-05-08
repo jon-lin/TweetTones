@@ -9,8 +9,23 @@ module.exports = {
     devtoolModuleFilenameTemplate: '[resourcePath]',
     devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]'
   },
+  module: {
+    loaders: [
+      {
+        test: [/\.jsx?$/],
+        exclude: /(node_modules)/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015']
+        }
+      }
+    ]
+  },
   devtool: 'source-maps',
   node: {
     fs: "empty"
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '*']
   }
 };
