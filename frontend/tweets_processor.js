@@ -12,7 +12,7 @@ class TweetsProcessor {
   }
 
   spinner() {
-    $('body').append($(`<div id='spinner'><img src="/loading.svg" /></div>`));
+    $('body').append(`<div id='spinner'><img src="/loading.svg" /></div>`);
   }
 
   displayTweetsAsEmbeds() {
@@ -27,13 +27,14 @@ class TweetsProcessor {
       $('.tweets-carousel-container').append(elForInsertion);
     }
 
+    window.tweets = this.tweets;
+
     let idx = 0;
 
     let iterateThroughTweetsOnAsyncSuccess = (idx) => {
       let currentTweet = this.tweets[idx];
       twttr.widgets.createTweet(currentTweet.id_str, document.getElementById(currentTweet.id_str))
         .then(() => {
-          console.log(idx);
           if (idx < this.tweets.length - 1) {
             iterateThroughTweetsOnAsyncSuccess(idx + 1);
           } else {
@@ -41,12 +42,8 @@ class TweetsProcessor {
                 this.emotionToneBarchart.destroy();
                 this.languageToneBarchart.destroy();
                 this.socialToneBarchart.destroy();
-
                 this.displaySentimentData();
               });
-
-              $('.tweets-carousel-container').slick({});
-              $('.tweets-carousel-container').slick('slickSetOption', 'adaptiveHeight', true);
 
               this.addSentimentData();
           }
@@ -54,6 +51,13 @@ class TweetsProcessor {
     }
 
     iterateThroughTweetsOnAsyncSuccess(idx);
+
+    //not sure why but chance of carousel failure much lower if slick is initialized here
+    $('.tweets-carousel-container').slick({});
+
+    //adaptiveHeight is set on after the carousel is initiated because otherwise,
+    //the carousel doesn't load either
+    $('.tweets-carousel-container').slick('slickSetOption', 'adaptiveHeight', true);
   }
 
   addSentimentData() {
@@ -98,10 +102,6 @@ class TweetsProcessor {
   }
 
   displaySentimentData() {
-    //adaptiveHeight is set on after the carousel is initiated because otherwise,
-    //the carousel doesn't load properly for some reason
-    $('.tweets-carousel-container').slick('slickSetOption', 'adaptiveHeight', true);
-
     let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
     let emotionToneData = this.tweetsHash[selectedTweetId].emotion_tone;
 
@@ -155,13 +155,11 @@ class TweetsProcessor {
     });
 
     let languageToneData = this.tweetsHash[selectedTweetId].language_tone;
-    debugger
     let ctx2 = $("#language-tone-barchart");
 
     let languageTones = Object.keys(languageToneData);
     let languageValues = languageTones.map(tone => languageToneData[tone]);
 
-    debugger
     this.languageToneBarchart = new Chart(ctx2, {
       type: 'bar',
       data: {

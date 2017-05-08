@@ -25,14 +25,15 @@ $(document).ready(
     modal.show();
 
     $('.submitInput').click(() => {
+      if ($('.twitterUser').val() !== "") {
+        APIUtil.fetchTweets($('.twitterUser').val())
+        .then(tweets => {
 
-      APIUtil.fetchTweets($('.twitterUser').val())
-      .then(tweets => {
+          modal.hide().then(() => $('.splash-modal').css('display',' none'));
 
-        modal.hide().then(() => $('.splash-modal').css('display',' none'));
-
-        new TweetsProcessor(tweets);
-      });
+          new TweetsProcessor(tweets);
+        });
+      }
     });
 
     $('.submitDemo').click(() => {
