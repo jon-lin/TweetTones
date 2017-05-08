@@ -28,6 +28,8 @@ class TweetsProcessor {
       twttr.widgets.createTweet(tweet.id_str, document.getElementById(tweet.id_str));
     });
 
+    $('.tweets-carousel-container').on('afterChange', () => this.displaySentimentData());
+
     $('.tweets-carousel-container').slick({});
 
     //adaptiveHeight is set on after the carousel is initiated because otherwise,
@@ -40,10 +42,6 @@ class TweetsProcessor {
   addSentimentData() {
     let count = 0;
     for (let key in this.tweetsHash) {
-
-      //The line below is dangerous in that you're calling an async function
-      //inside a forEach loop. What if the loop doesn't wait for each
-      //async function to finish before moving onto the next iteration?
       APIUtil.fetchSentiments(this.tweetsHash[key]['body'])
         .then(sentimentData => {
           let setTweetsHash = this.tweetsHash[key];
@@ -106,18 +104,17 @@ class TweetsProcessor {
     //   });
     //
     //   window.tweetsHash = this.tweetsHash;
+
     let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
     let emotion_tone_data = this.tweetsHash[selectedTweetId].emotion_tone;
 
-
-    debugger
     let ctx = $("#emotion-tone-barchart");
 
     let emotions = Object.keys(emotion_tone_data);
     let emotion_values = emotions.map(emotion => emotion_tone_data[emotion]);
 
     let emotionToneBarchart = new Chart(ctx, {
-      type: 'line',
+      type: 'bar',
       data: {
           labels: emotions,
           datasets: [{
