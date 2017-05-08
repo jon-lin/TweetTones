@@ -13,8 +13,13 @@
     "slick-carousel": "^1.6.0"
   },
   "devDependencies": {},
+  "engines": {
+    "node": "7.7.4",
+    "npm": "4.1.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
