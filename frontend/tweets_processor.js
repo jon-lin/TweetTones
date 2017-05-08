@@ -38,6 +38,7 @@ class TweetsProcessor {
   }
 
   addSentimentData() {
+    let count = 0;
     for (let key in this.tweetsHash) {
 
       //The line below is dangerous in that you're calling an async function
@@ -75,7 +76,8 @@ class TweetsProcessor {
           setTweetsHashSocial['agreeableness'] = social_tone[3].score;
           setTweetsHashSocial['emotionalRange'] = social_tone[4].score;
 
-          this.displaySentimentData();
+          count++;
+          if (count === this.tweets.length) { this.displaySentimentData(); }
       });
 
     }
@@ -104,16 +106,23 @@ class TweetsProcessor {
     //   });
     //
     //   window.tweetsHash = this.tweetsHash;
+    let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
+    let emotion_tone_data = this.tweetsHash[selectedTweetId].emotion_tone;
 
+
+    debugger
     let ctx = $("#emotion-tone-barchart");
 
+    let emotions = Object.keys(emotion_tone_data);
+    let emotion_values = emotions.map(emotion => emotion_tone_data[emotion]);
+
     let emotionToneBarchart = new Chart(ctx, {
-      type: 'bar',
+      type: 'line',
       data: {
-          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          labels: emotions,
           datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
+              label: 'Emotional Tone',
+              data: emotion_values,
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
