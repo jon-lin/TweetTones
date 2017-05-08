@@ -1,5 +1,6 @@
 import { APIUtil } from './api_util.js';
-import * as d3 from "d3";
+// import * as d3 from "d3";
+import Chart from 'chart.js';
 
 class TweetsProcessor {
   constructor(tweets) {
@@ -84,46 +85,65 @@ class TweetsProcessor {
 
   displaySentimentData() {
 
-      let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
-      let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
-      $('#replaceSentiment').replaceWith(elToAddToScreen);
+    //   let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
+    //   let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
+    //   $('#replaceSentiment').replaceWith(elToAddToScreen);
+    //
+    // $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-next.slick-arrow')
+    //   .click(() => {
+    //     let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
+    //     let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
+    //     $('#replaceSentiment').replaceWith(elToAddToScreen);
+    //   });
+    //
+    // $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-prev.slick-arrow')
+    //   .click(() => {
+    //     let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
+    //     let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
+    //     $('#replaceSentiment').replaceWith(elToAddToScreen);
+    //   });
+    //
+    //   window.tweetsHash = this.tweetsHash;
 
-    $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-next.slick-arrow')
-      .click(() => {
-        let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
-        let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
-        $('#replaceSentiment').replaceWith(elToAddToScreen);
-      });
+    let ctx = $("#emotion-tone-barchart");
 
-    $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-prev.slick-arrow')
-      .click(() => {
-        let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
-        let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
-        $('#replaceSentiment').replaceWith(elToAddToScreen);
-      });
-
-      window.tweetsHash = this.tweetsHash;
-
-      // debugger
-
-  //     setTimeout(() => {
-  //       let data = this.tweetsHash[$('.slick-slide.slick-current.slick-active').attr('id')].emotion_tone;
-  //       debugger
-  //     }, 2000);
-  //
-  //     debugger
-  //
-  //     d3.select('.emotion-tone-barchart')
-  //       .selectAll('div')
-  //         .data(data)
-  //       .enter().append('div')
-  //         .style('width', function(d) { return d * 10 + "px"; })
-  //         .text(function(d) {return d; });
-  //
+    let emotionToneBarchart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          datasets: [{
+              label: '# of Votes',
+              data: [12, 19, 3, 5, 2, 3],
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                  'rgba(255,99,132,1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          }
+      }
+    });
   }
-
-
-
 }
 
 export default TweetsProcessor;
