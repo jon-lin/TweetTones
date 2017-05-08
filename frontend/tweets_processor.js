@@ -43,8 +43,7 @@ class TweetsProcessor {
               $('.tweets-carousel-container').slick({});
 
 
-              //adaptiveHeight is set on after the carousel is initiated because otherwise,
-              //the slick draggable div won't initially adjust its height for the first slide
+
 
 
               this.addSentimentData();
@@ -133,6 +132,9 @@ class TweetsProcessor {
   }
 
   displaySentimentData() {
+    //adaptiveHeight is set on after the carousel is initiated because otherwise,
+    //the carousel doesn't load properly for some reason
+
     $('.tweets-carousel-container').slick('slickSetOption', 'adaptiveHeight', true);
 
     let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
