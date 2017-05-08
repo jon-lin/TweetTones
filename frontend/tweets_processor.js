@@ -15,17 +15,18 @@ class TweetsProcessor {
     // new Spinner();
     //DOMParser is used to convert UTF-8 symbols in tweet to plain text
     let parser = new DOMParser;
+    for (let i = 0; i < this.tweets.length; i++) {
+      let modText = parser.parseFromString(this.tweets[i].text, 'text/html').body.textContent;
+      this.tweetsHash[this.tweets[i].id_str] =  {id: this.tweets[i].id_str, timestamp: this.tweets[i].created_at, body: modText};
+
+      let elForInsertion = `<div id=${this.tweets[i].id_str}></div>`;
+      $('.tweets-carousel-container').append(elForInsertion);
+    }
+
     let idx = 0;
+
     let iterateThroughTweetsOnAsyncSuccess = (idx) => {
       let currentTweet = this.tweets[idx];
-      let modText = parser.parseFromString(currentTweet.text, 'text/html').body.textContent;
-      this.tweetsHash[currentTweet.id_str] =  {id: currentTweet.id_str, timestamp: currentTweet.created_at, body: modText};
-
-      let elForInsertion = `<div id=${currentTweet.id_str}></div>`;
-      $('.tweets-carousel-container').append(elForInsertion);
-
-
-
       twttr.widgets.createTweet(currentTweet.id_str, document.getElementById(currentTweet.id_str))
         .then(() => {
           console.log(idx);
@@ -41,10 +42,7 @@ class TweetsProcessor {
               });
 
               $('.tweets-carousel-container').slick({});
-
-
-
-
+              $('.tweets-carousel-container').slick('slickSetOption', 'adaptiveHeight', true);
 
               this.addSentimentData();
           }
@@ -52,42 +50,6 @@ class TweetsProcessor {
     }
 
     iterateThroughTweetsOnAsyncSuccess(idx);
-
-    // let count = 0;
-    // this.tweets.forEach(tweet => {
-    //   let modText = parser.parseFromString(tweet.text, 'text/html').body.textContent;
-    //   this.tweetsHash[tweet.id_str] =  {id: tweet.id_str, timestamp: tweet.created_at, body: modText};
-    //
-    //   let elForInsertion = `<div id=${tweet.id_str}></div>`;
-    //   $('.tweets-carousel-container').append(elForInsertion);
-    //
-    //   //The line below is dangerous in that you're calling an async function
-    //   //inside a forEach loop. What if the loop doesn't wait for each
-    //   //async function to finish before moving onto the next iteration?
-    //   twttr.widgets.createTweet(tweet.id_str, document.getElementById(tweet.id_str))
-    //     .then(() => {
-    //       count ++;
-    //       console.log(count);
-    //       if (count === this.tweets.length) {
-    //         $('.tweets-carousel-container').on('afterChange', () => {
-    //           this.emotionToneBarchart.destroy();
-    //           this.languageToneBarchart.destroy();
-    //           this.socialToneBarchart.destroy();
-    //
-    //           this.displaySentimentData();
-    //         });
-    //
-    //         $('.tweets-carousel-container').slick({});
-    //
-    //         //adaptiveHeight is set on after the carousel is initiated because otherwise,
-    //         //the slick draggable div won't initially adjust its height for the first slide
-    //         $('.tweets-carousel-container').slick('slickSetOption', 'adaptiveHeight', true);
-    //
-    //         this.addSentimentData();
-    //       }
-    //     })
-    // });
-
   }
 
   addSentimentData() {
@@ -134,7 +96,6 @@ class TweetsProcessor {
   displaySentimentData() {
     //adaptiveHeight is set on after the carousel is initiated because otherwise,
     //the carousel doesn't load properly for some reason
-
     $('.tweets-carousel-container').slick('slickSetOption', 'adaptiveHeight', true);
 
     let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
@@ -277,6 +238,45 @@ class TweetsProcessor {
 }
 
 export default TweetsProcessor;
+
+////////// working version of display tweets as embeds before dealing with loading individual tweet async
+
+// let count = 0;
+// this.tweets.forEach(tweet => {
+//   let modText = parser.parseFromString(tweet.text, 'text/html').body.textContent;
+//   this.tweetsHash[tweet.id_str] =  {id: tweet.id_str, timestamp: tweet.created_at, body: modText};
+//
+//   let elForInsertion = `<div id=${tweet.id_str}></div>`;
+//   $('.tweets-carousel-container').append(elForInsertion);
+//
+//   //The line below is dangerous in that you're calling an async function
+//   //inside a forEach loop. What if the loop doesn't wait for each
+//   //async function to finish before moving onto the next iteration?
+//   twttr.widgets.createTweet(tweet.id_str, document.getElementById(tweet.id_str))
+//     .then(() => {
+//       count ++;
+//       console.log(count);
+//       if (count === this.tweets.length) {
+//         $('.tweets-carousel-container').on('afterChange', () => {
+//           this.emotionToneBarchart.destroy();
+//           this.languageToneBarchart.destroy();
+//           this.socialToneBarchart.destroy();
+//
+//           this.displaySentimentData();
+//         });
+//
+//         $('.tweets-carousel-container').slick({});
+//
+//         //adaptiveHeight is set on after the carousel is initiated because otherwise,
+//         //the slick draggable div won't initially adjust its height for the first slide
+//         $('.tweets-carousel-container').slick('slickSetOption', 'adaptiveHeight', true);
+//
+//         this.addSentimentData();
+//       }
+//     })
+// });
+
+//////////////
 
 //   let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
 //   let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;

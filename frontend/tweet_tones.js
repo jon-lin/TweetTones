@@ -6,7 +6,7 @@ $(document).ready(
   () => {
     let html =   `<div class="splash-modal">
                       <div class="splashTitle">TweetTones</div>
-                      <div class="splashSubtitle">Analyze the sentiment of hundreds of tweets from any user.</div>
+                      <div class="splashSubtitle">Analyze the sentiment of any Twitter user's recent tweets.</div>
                       <img src='/tweettones.png' class='splashLogo'/>
                       <div class="splashbottom3elements">
                         <div>Search by Twitter User:</div>
