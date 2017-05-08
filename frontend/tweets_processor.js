@@ -28,7 +28,14 @@ class TweetsProcessor {
       twttr.widgets.createTweet(tweet.id_str, document.getElementById(tweet.id_str));
     });
 
-    $('.tweets-carousel-container').on('afterChange', () => this.displaySentimentData());
+    $('.tweets-carousel-container').on('afterChange', () => {
+      // debugger
+      this.emotionToneBarchart.destroy();
+      this.languageToneBarchart.destroy();
+      this.socialToneBarchart.destroy();
+
+      this.displaySentimentData();
+    });
 
     $('.tweets-carousel-container').slick({});
 
@@ -72,7 +79,7 @@ class TweetsProcessor {
           setTweetsHashSocial['conscientiousness'] = social_tone[1].score;
           setTweetsHashSocial['extraversion'] = social_tone[2].score;
           setTweetsHashSocial['agreeableness'] = social_tone[3].score;
-          setTweetsHashSocial['emotionalRange'] = social_tone[4].score;
+          setTweetsHashSocial['emotional range'] = social_tone[4].score;
 
           count++;
           if (count === this.tweets.length) { this.displaySentimentData(); }
@@ -84,57 +91,42 @@ class TweetsProcessor {
   }
 
   displaySentimentData() {
-
-    //   let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
-    //   let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
-    //   $('#replaceSentiment').replaceWith(elToAddToScreen);
-    //
-    // $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-next.slick-arrow')
-    //   .click(() => {
-    //     let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
-    //     let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
-    //     $('#replaceSentiment').replaceWith(elToAddToScreen);
-    //   });
-    //
-    // $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-prev.slick-arrow')
-    //   .click(() => {
-    //     let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
-    //     let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
-    //     $('#replaceSentiment').replaceWith(elToAddToScreen);
-    //   });
-    //
-    //   window.tweetsHash = this.tweetsHash;
-
     let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
-    let emotion_tone_data = this.tweetsHash[selectedTweetId].emotion_tone;
+    let emotionToneData = this.tweetsHash[selectedTweetId].emotion_tone;
 
     let ctx = $("#emotion-tone-barchart");
 
-    let emotions = Object.keys(emotion_tone_data);
-    let emotion_values = emotions.map(emotion => emotion_tone_data[emotion]);
+    let emotions = Object.keys(emotionToneData);
+    let emotionValues = emotions.map(emotion => emotionToneData[emotion]);
 
-    let emotionToneBarchart = new Chart(ctx, {
+    Chart.plugins.register({
+      beforeDraw: function(chartInstance) {
+        var ctx = chartInstance.chart.ctx;
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, chartInstance.chart.width, chartInstance.chart.height);
+      }
+    });
+
+    this.emotionToneBarchart = new Chart(ctx, {
       type: 'bar',
       data: {
           labels: emotions,
           datasets: [{
               label: 'Emotional Tone',
-              data: emotion_values,
+              data: emotionValues,
               backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
+                  'rgba(223, 20, 20, 0.62)',
+                  'rgba(68, 20, 223, 0.54)',
+                  'rgba(20, 223, 68, 0.7)',
+                  'rgba(219, 198, 10, 0.55)',
+                  'rgba(3, 119, 154, 0.51)'
               ],
               borderColor: [
-                  'rgba(255,99,132,1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
+                'rgba(223, 20, 20, 0.62)',
+                'rgba(68, 20, 223, 0.54)',
+                'rgba(20, 223, 68, 0.7)',
+                'rgba(219, 198, 10, 0.55)',
+                'rgba(3, 119, 154, 0.51)'
               ],
               borderWidth: 1
           }]
@@ -143,16 +135,121 @@ class TweetsProcessor {
           scales: {
               yAxes: [{
                   ticks: {
-                      beginAtZero:true
+                      beginAtZero:true,
+                      max: 1
                   }
               }]
           }
       }
     });
+
+    let languageToneData = this.tweetsHash[selectedTweetId].language_tone;
+    debugger
+    let ctx2 = $("#language-tone-barchart");
+
+    let languageTones = Object.keys(languageToneData);
+    let languageValues = languageTones.map(tone => languageToneData[tone]);
+
+    debugger
+    this.languageToneBarchart = new Chart(ctx2, {
+      type: 'bar',
+      data: {
+          labels: languageTones,
+          datasets: [{
+              label: 'Language Style',
+              data: languageValues,
+              backgroundColor: [
+                '#274B5F',
+                '#274B5F',
+                '#274B5F'
+              ],
+              borderColor: [
+                '#274B5F',
+                '#274B5F',
+                '#274B5F'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true,
+                      max: 1
+                  }
+              }]
+          }
+      }
+    });
+
+    let socialToneData = this.tweetsHash[selectedTweetId].social_tone;
+    let ctx3 = $("#social-tone-barchart");
+
+    let socialTones = Object.keys(socialToneData);
+    let socialValues = socialTones.map(tone => socialToneData[tone]);
+
+    this.socialToneBarchart = new Chart(ctx3, {
+      type: 'bar',
+      data: {
+          labels: socialTones,
+          datasets: [{
+              label: 'Social Tendencies',
+              data: socialValues,
+              backgroundColor: [
+                '#1CB4A0',
+                '#1CB4A0',
+                '#1CB4A0',
+                '#1CB4A0',
+                '#1CB4A0'
+              ],
+              borderColor: [
+                '#1CB4A0',
+                '#1CB4A0',
+                '#1CB4A0',
+                '#1CB4A0',
+                '#1CB4A0'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true,
+                      max: 1
+                  }
+              }]
+          }
+      }
+    });
+
+
   }
 }
 
 export default TweetsProcessor;
+
+//   let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
+//   let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
+//   $('#replaceSentiment').replaceWith(elToAddToScreen);
+//
+// $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-next.slick-arrow')
+//   .click(() => {
+//     let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
+//     let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
+//     $('#replaceSentiment').replaceWith(elToAddToScreen);
+//   });
+//
+// $('body > div.tweets-carousel-container.slick-initialized.slick-slider > button.slick-prev.slick-arrow')
+//   .click(() => {
+//     let selectedTweetId = $('.slick-slide.slick-current.slick-active').attr('id');
+//     let elToAddToScreen = `<div id="replaceSentiment">${JSON.stringify(this.tweetsHash[selectedTweetId].emotion_tone)}</div>`;
+//     $('#replaceSentiment').replaceWith(elToAddToScreen);
+//   });
+//
+//   window.tweetsHash = this.tweetsHash;
 
 //this doesn't solve the carousel initial load problem, taking into account async:
 // let idx = 0;

@@ -147,6 +147,23 @@
   /*background: white;*/
 }
 
+body > div.tweets-carousel-container.slick-initialized.slick-slider > div {
+  min-width: 400px;
+}
+
+.all-barcharts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.all-barcharts > * {
+  max-height: 400px;
+  max-width: 400px;
+  margin: 15px;
+  border-radius: 10px;
+}
+
  /*some possible future modal setttings*/
 
  /*.modals-container {
