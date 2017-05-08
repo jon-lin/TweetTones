@@ -10,7 +10,8 @@
   "dependencies": {
     "chart.js": "^2.5.0",
     "modal-js": "^3.0.0",
-    "slick-carousel": "^1.6.0"
+    "slick-carousel": "^1.6.0",
+    "webpack": "^2.5.1"
   },
   "devDependencies": {},
   "engines": {
