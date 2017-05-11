@@ -20,8 +20,8 @@
 
       return t;
     }(document, "script", "twitter-wjs"));</script>
-    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900', '//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css', '//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900', '//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css', '//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css', "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'https://code.jquery.com/ui/1.12.1/jquery-ui.js', 'data-turbolinks-track': 'reload' %>
 
   </head>
 
@@ -51,7 +51,9 @@
     </div>
 
     <div class="all-linecharts">
-      <canvas id="emotion-linechart"></canvas>
+      <div id='emotion-linechart-container'>
+        <canvas id="emotion-linechart"></canvas>
+      </div>
     </div>
 
     <div id="modals-container">

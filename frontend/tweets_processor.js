@@ -395,6 +395,10 @@ class TweetsProcessor {
         }
       });
 
+    // $( function() {
+    //     $( "#emotion-linechart-container").resizable();
+    //   } );
+
     $('#spinner').remove();
   }
 
