@@ -30,7 +30,6 @@ $(document).ready(
       if ($('.twitterUser').val() !== "") {
         APIUtil.fetchTweets($('.twitterUser').val())
         .then(tweets => {
-
           modal.hide().then(() => $('.splash-modal').css('display',' none'));
           $('#emotion-linechart').css('width', '800');
           $('#emotion-linechart').css('height', '600');
@@ -45,7 +44,6 @@ $(document).ready(
 
       APIUtil.fetchTweets('realDonaldTrump')
       .then(tweets => {
-
         modal.hide().then(() => $('.splash-modal').css('display',' none'));
         $('#emotion-linechart').css('width', '800');
         $('#emotion-linechart').css('height', '600');
