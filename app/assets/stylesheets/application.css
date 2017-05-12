@@ -88,7 +88,7 @@
    position: absolute;
    top: 130px;
    left: 105px;
-   height: 240px;
+   height: 220px;
    text-align: center;
  }
 
@@ -171,6 +171,11 @@
   margin: 0 auto;
   padding: 40px;
   width: 40%;
+}
+
+.errorMessage {
+  background-color: red;
+  font-size: 12px;
 }
 
 #spinner {

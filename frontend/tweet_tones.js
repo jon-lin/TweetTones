@@ -55,22 +55,34 @@ $(document).ready(
     $('.submitInput, .submitDemo').click((e) => {
 
       let searchTerm;
+      let submittedInput = $('.twitterUser').val();
 
-      if (e.currentTarget.value === 'customInput') {
-        searchTerm = $('.twitterUser').val();
-      } else if (e.currentTarget.value !== '') {
+      if (e.currentTarget.value === 'customInput' && submittedInput) {
+        searchTerm = submittedInput;
+      } else if (e.currentTarget.value === 'customInput' && !submittedInput) {
+        $('.customInput').append(`<div class='errorMessage'>Twitter username can't be blank!</div>`);
+        setTimeout(() => $('.errorMessage').remove(), 2000);
+        return;
+      } else {
         searchTerm = e.currentTarget.value;
       }
 
       APIUtil.fetchTweets(searchTerm)
-        .then(tweets => {
-          modal.hide().then(() => $('.splash-modal').css('display',' none'));
-          $('#emotion-linechart').css('width', '800');
-          $('#emotion-linechart').css('height', '600');
-          $('#navbar').toggle();
+        .then(
+            tweets => {
+              modal.hide().then(() => $('.splash-modal').css('display',' none'));
+              $('#emotion-linechart').css('width', '800');
+              $('#emotion-linechart').css('height', '600');
+              $('#navbar').toggle();
 
-          new TweetsProcessor(tweets);
-        });
+              new TweetsProcessor(tweets);
+            },
+
+            () => {
+              $('.customInput').append(`<div class='errorMessage'>Twitter username not found!</div>`);
+              setTimeout(() => $('.errorMessage').remove(), 2000);
+            }
+        );
     });
 
   }
