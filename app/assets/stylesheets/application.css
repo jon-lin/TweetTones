@@ -239,7 +239,22 @@ body > div.tweets-carousel-container.slick-initialized.slick-slider > div {
 #navbar {
   display: flex;
   justify-content: space-between;
-  margin-top: 5px;
+  margin-top: 10px;
+}
+
+#navbar > * > * {
+  font-size: 20px;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 3px;
+  border-radius: 8px;
+}
+
+#navbar .noteOnScores {
+  border: none;
+}
+
+#navbar > * > *:hover:not(.noteOnScores) {
+  border: 1px solid rgba(255,255,255,0.8);
 }
 
 #navbar div:last-child > * {
