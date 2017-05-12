@@ -67,10 +67,12 @@ $(document).ready(
         searchTerm = e.currentTarget.value;
       }
 
+      $('.searchAgainButton').click(() => window.location.reload());
+
       APIUtil.fetchTweets(searchTerm)
         .then(
             tweets => {
-              modal.hide().then(() => $('.splash-modal').css('display',' none'));
+              modal.hide().then(() => $('.splash-modal').css('display','none'));
               $('#emotion-linechart').css('width', '800');
               $('#emotion-linechart').css('height', '600');
               $('#navbar').toggle();

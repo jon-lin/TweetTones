@@ -243,10 +243,11 @@ body > div.tweets-carousel-container.slick-initialized.slick-slider > div {
 }
 
 #navbar > * > * {
-  font-size: 20px;
+  font-size: 18px;
   border: 1px solid rgba(255,255,255,0.2);
   padding: 3px;
   border-radius: 8px;
+  margin-right: 5px;
 }
 
 #navbar .noteOnScores {
@@ -257,17 +258,17 @@ body > div.tweets-carousel-container.slick-initialized.slick-slider > div {
   border: 1px solid rgba(255,255,255,0.8);
 }
 
-#navbar div:last-child > * {
+/*#navbar div:last-child > * {
   margin-right: 10px;
-}
+}*/
 
 #navbar > * {
   margin-left: 5px;
 }
 
-#navbar div:first-child a:last-child {
+/*#navbar div:first-child a:last-child {
   margin-left: 15px;
-}
+}*/
 
  /*some possible future modal setttings*/
 
