@@ -240,10 +240,11 @@ body > div.tweets-carousel-container.slick-initialized.slick-slider > div {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+  min-width: 1200px;
 }
 
 #navbar > * > * {
-  font-size: 18px;
+  font-size: 14px;
   border: 1px solid rgba(255,255,255,0.2);
   padding: 3px;
   border-radius: 8px;
