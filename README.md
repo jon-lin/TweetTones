@@ -1,2 +1,2 @@
 # TweetTones
-* [Heroku link](https://tweettones.herokuapp.com/)
+* [Live link](https://tweettones.me)
