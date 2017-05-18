@@ -1,2 +1,2 @@
 # TweetTones
-* [Live link](https://tweettones.me)
+* [Live link](https://www.tweettones.me/)
