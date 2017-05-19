@@ -4,8 +4,6 @@ import Modal from 'modal-js';
 
 $(document).ready(
   () => {
-      $('#navbar').toggle();
-
       let html =   `<div class="splash-modal">
                         <div class="splashTitle">TweetTones</div>
                         <div class="splashSubtitle">Analyze the sentiment of any Twitter user's recent tweets.</div>
@@ -44,26 +42,24 @@ $(document).ready(
                         </div>
                       </div>`;
 
-      let modal = new Modal(html, {
-          containerEl: document.getElementById('modals-container'),
-          activeClass: 'modal-active',
-          onClickOutside: () => {}
-      });
-
-      modal.show();
-
       let errors = {
         blankField: `Twitter username can't be blank!`,
         usernameNotFound: `Twitter username not found!`
       }
 
-      let handleError = (errorMsg) => {
+      let handleError = errorMsg => {
         $('.customInput').append(
           `<div class='errorMessage'>${errorMsg}</div>`
         );
 
         setTimeout(() => $('.errorMessage').remove(), 2000);
       }
+
+      let modal = new Modal(html, {
+          containerEl: document.getElementById('modals-container'),
+          activeClass: 'modal-active',
+          onClickOutside: () => {}
+      });
 
       let fetchTweets = searchTerm => {
           APIUtil.fetchTweets(searchTerm)
@@ -93,9 +89,11 @@ $(document).ready(
           } else {
             searchTerm = targetValue;
           }
-                    
+
           fetchTweets(searchTerm);
         }
+
+      $('#navbar').toggle();
 
       $('.twitterUser').on('keypress', e => {
         if (e.which === 13) { processTweets(e); }
@@ -103,5 +101,6 @@ $(document).ready(
 
       $('.submitInput, .submitDemo').click(e => processTweets(e));
 
+      modal.show();
     }
 );
