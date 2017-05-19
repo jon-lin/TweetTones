@@ -6,16 +6,21 @@ class TweetsProcessor {
     this.tweets = tweets;
     this.tweetsHash = {};
     this.displayTweetsAsEmbeds();
-    this.data = [];
+  }
+
+  displayTweetsAsEmbeds() {
+    this.spinner();
+    this.storeTweetsInStateAndInsertDivsIntoCarousel();
+    this.insertTweetEmbedsIntoCarousel(0);
+    this.initializeCarousel();
   }
 
   spinner() {
     $('body').append(`<div id='spinner'><img src="/loading.svg" /></div>`);
   }
 
-  displayTweetsAsEmbeds() {
-    this.spinner();
-    //DOMParser is used to convert UTF-8 symbols in tweet to plain text
+  storeTweetsInStateAndInsertDivsIntoCarousel() {
+    //DOMParser is used to convert UTF-8 symbols in tweets to plain text
     let parser = new DOMParser;
     for (let i = 0; i < this.tweets.length; i++) {
       let modText = parser.parseFromString(this.tweets[i].text, 'text/html').body.textContent;
@@ -24,35 +29,29 @@ class TweetsProcessor {
       let elForInsertion = `<div id=${this.tweets[i].id_str}></div>`;
       $('.tweets-carousel-container').append(elForInsertion);
     }
+  }
 
-    let idx = 0;
+  insertTweetEmbedsIntoCarousel(idx) {
+    let currentTweet = this.tweets[idx];
+    twttr.widgets.createTweet(currentTweet.id_str, document.getElementById(currentTweet.id_str))
+      .then(() => {
+        if (idx < this.tweets.length - 1) {
+          this.insertTweetEmbedsIntoCarousel(idx + 1);
+        } else {
+          this.addSentimentData();
+        }
+      });
+  }
 
-    let iterateThroughTweetsOnAsyncSuccess = (idx) => {
-      let currentTweet = this.tweets[idx];
-      twttr.widgets.createTweet(currentTweet.id_str, document.getElementById(currentTweet.id_str))
-        .then(() => {
-          if (idx < this.tweets.length - 1) {
-            iterateThroughTweetsOnAsyncSuccess(idx + 1);
-          } else {
-              $('.tweets-carousel-container').on('afterChange', () => {
-                this.emotionToneBarchart.destroy();
-                this.languageToneBarchart.destroy();
-                this.socialToneBarchart.destroy();
-                this.displaySentimentData();
-              });
+  initializeCarousel() {
+    $('.tweets-carousel-container').on('afterChange', () => {
+      this.emotionToneBarchart.destroy();
+      this.languageToneBarchart.destroy();
+      this.socialToneBarchart.destroy();
+      this.displaySentimentData();
+    });
 
-              this.addSentimentData();
-          }
-        });
-    }
-
-    iterateThroughTweetsOnAsyncSuccess(idx);
-
-    //not sure why but chance of carousel failure much lower if slick is initialized here
     $('.tweets-carousel-container').slick({});
-
-    //adaptiveHeight is set on after the carousel is initiated because otherwise,
-    //the carousel doesn't load either
     $('.tweets-carousel-container').slick('slickSetOption', 'adaptiveHeight', true);
   }
 
