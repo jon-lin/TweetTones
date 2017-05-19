@@ -52,6 +52,19 @@ $(document).ready(
 
       modal.show();
 
+      let errors = {
+        blankField: `Twitter username can't be blank!`,
+        usernameNotFound: `Twitter username not found!`
+      }
+
+      let handleError = (errorMsg) => {
+        $('.customInput').append(
+          `<div class='errorMessage'>${errorMsg}</div>`
+        );
+
+        setTimeout(() => $('.errorMessage').remove(), 2000);
+      }
+
       let fetchTweets = searchTerm => {
           APIUtil.fetchTweets(searchTerm)
             .then(
@@ -64,23 +77,9 @@ $(document).ready(
                 new TweetsProcessor(tweets);
               },
 
-              () => {
-                $('.customInput').append(
-                  `<div class='errorMessage'>Twitter username not found!</div>`
-                );
-
-                setTimeout(() => $('.errorMessage').remove(), 2000);
-              }
+              () => handleError(errors.usernameNotFound)
             );
         }
-
-      let handleBlankError = () => {
-        $('.customInput').append(
-          `<div class='errorMessage'>Twitter username can't be blank!</div>`
-        );
-
-        setTimeout(() => $('.errorMessage').remove(), 2000);
-      }
 
       let processTweets = (e) => {
           let searchTerm,
@@ -89,13 +88,12 @@ $(document).ready(
               targetType = e.currentTarget.type
 
           if (targetValue === 'customInputButton' || targetType === 'text') {
-            submittedInput ? (searchTerm = submittedInput) : handleBlankError()
+            submittedInput ? (searchTerm = submittedInput) : handleError(errors.blankField)
             if (!submittedInput) { return; }
           } else {
             searchTerm = targetValue;
           }
-
-          $('.searchAgainButton').click(() => window.location.reload());
+                    
           fetchTweets(searchTerm);
         }
 

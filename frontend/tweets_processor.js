@@ -399,6 +399,7 @@ class TweetsProcessor {
     //     $( "#emotion-linechart-container").resizable();
     //   } );
 
+    $('.searchAgainButton').click(() => window.location.reload());
     $('#spinner').remove();
   }
 
