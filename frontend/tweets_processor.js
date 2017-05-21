@@ -62,22 +62,8 @@ class TweetsProcessor {
     for (let key in this.tweetsHash) {
       APIUtil.fetchSentiments(this.tweetsHash[key]['body'])
         .then(sentimentData => {
-          let setTweetsHash = this.tweetsHash[key];
 
-          sentimentData.document_tone.tone_categories.forEach(toneCategory => {
-            setTweetsHash[toneCategory.category_id] = {};
-            toneCategory.tones.forEach(tonesObj => {
-              if (tonesObj.tone_id.match(/_big5/)) {
-                tonesObj.tone_id = tonesObj.tone_id.slice(0, -5);
-              }
-
-              if (tonesObj.tone_id === 'emotional_range') {
-                tonesObj.tone_id = 'emotional range';
-              }
-
-              setTweetsHash[toneCategory.category_id][tonesObj.tone_id] = tonesObj.score;
-            });
-          });
+          this.addSentimentDataToOneTweet(key, sentimentData.document_tone.tone_categories)
 
           count++;
           if (count === this.tweets.length) {
@@ -86,6 +72,26 @@ class TweetsProcessor {
           }
       });
     }
+  }
+
+  addSentimentDataToOneTweet(key, toneCategories) {
+    let setTweetsHash = this.tweetsHash[key];
+
+    toneCategories.forEach(toneCategory => {
+      setTweetsHash[toneCategory.category_id] = {};
+      let currentToneCategory = setTweetsHash[toneCategory.category_id];
+      toneCategory.tones.forEach(tonesObj => {
+        if (tonesObj.tone_id.match(/_big5/)) {
+          tonesObj.tone_id = tonesObj.tone_id.slice(0, -5);
+        }
+
+        if (tonesObj.tone_id === 'emotional_range') {
+          tonesObj.tone_id = 'emotional range';
+        }
+
+        currentToneCategory[tonesObj.tone_id] = tonesObj.score;
+      });
+    });
   }
 
   displaySentimentData() {
