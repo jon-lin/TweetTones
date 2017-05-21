@@ -23,8 +23,8 @@ class TweetsProcessor {
     //DOMParser is used to convert UTF-8 symbols in tweets to plain text
     let parser = new DOMParser;
     for (let i = 0; i < this.tweets.length; i++) {
-      let modText = parser.parseFromString(this.tweets[i].text, 'text/html').body.textContent;
-      this.tweetsHash[this.tweets[i].id_str] =  {id: this.tweets[i].id_str, timestamp: this.tweets[i].created_at, body: modText};
+      this.tweets[i].text = parser.parseFromString(this.tweets[i].text, 'text/html').body.textContent;
+      this.tweetsHash[this.tweets[i].id_str] =  {id: this.tweets[i].id_str, timestamp: this.tweets[i].created_at, body: this.tweets[i].text};
 
       let elForInsertion = `<div id=${this.tweets[i].id_str}></div>`;
       $('.tweets-carousel-container').append(elForInsertion);
@@ -42,6 +42,8 @@ class TweetsProcessor {
         }
       });
   }
+
+  // this.tweetsHash[this.tweets[idx].id_str][]
 
   initializeCarousel() {
     $('.tweets-carousel-container').on('afterChange', () => {
@@ -62,33 +64,20 @@ class TweetsProcessor {
         .then(sentimentData => {
           let setTweetsHash = this.tweetsHash[key];
 
-          let emotion_tone = sentimentData.document_tone.tone_categories[0].tones;
-          setTweetsHash['emotion_tone'] = {};
-          let setTweetsHashEmotion = setTweetsHash['emotion_tone'];
+          sentimentData.document_tone.tone_categories.forEach(toneCategory => {
+            setTweetsHash[toneCategory.category_id] = {};
+            toneCategory.tones.forEach(tonesObj => {
+              if (tonesObj.tone_id.match(/_big5/)) {
+                tonesObj.tone_id = tonesObj.tone_id.slice(0, -5);
+              }
 
-          setTweetsHashEmotion['anger'] = emotion_tone[0].score;
-          setTweetsHashEmotion['disgust'] = emotion_tone[1].score;
-          setTweetsHashEmotion['fear'] = emotion_tone[2].score;
-          setTweetsHashEmotion['joy'] = emotion_tone[3].score;
-          setTweetsHashEmotion['sadness'] = emotion_tone[4].score;
+              if (tonesObj.tone_id === 'emotional_range') {
+                tonesObj.tone_id = 'emotional range';
+              }
 
-          let language_tone = sentimentData.document_tone.tone_categories[1].tones;
-          setTweetsHash['language_tone'] = {};
-          let setTweetsHashLang = setTweetsHash['language_tone'];
-
-          setTweetsHashLang['analytical'] = language_tone[0].score;
-          setTweetsHashLang['confident'] = language_tone[1].score;
-          setTweetsHashLang['tentative'] = language_tone[2].score;
-
-          let social_tone = sentimentData.document_tone.tone_categories[2].tones;
-          setTweetsHash['social_tone'] = {};
-          let setTweetsHashSocial = setTweetsHash['social_tone'];
-
-          setTweetsHashSocial['openness'] = social_tone[0].score;
-          setTweetsHashSocial['conscientiousness'] = social_tone[1].score;
-          setTweetsHashSocial['extraversion'] = social_tone[2].score;
-          setTweetsHashSocial['agreeableness'] = social_tone[3].score;
-          setTweetsHashSocial['emotional range'] = social_tone[4].score;
+              setTweetsHash[toneCategory.category_id][tonesObj.tone_id] = tonesObj.score;
+            });
+          });
 
           count++;
           if (count === this.tweets.length) {
