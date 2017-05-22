@@ -38,12 +38,10 @@ class TweetsProcessor {
         if (idx < this.tweets.length - 1) {
           this.insertTweetEmbedsIntoCarousel(idx + 1);
         } else {
-          this.addSentimentData();
+          this.addSentimentData(0, Object.keys(this.tweetsHash));
         }
       });
   }
-
-  // this.tweetsHash[this.tweets[idx].id_str][]
 
   initializeCarousel() {
     $('.tweets-carousel-container').on('afterChange', () => {
@@ -57,21 +55,19 @@ class TweetsProcessor {
     $('.tweets-carousel-container').slick('slickSetOption', 'adaptiveHeight', true);
   }
 
-  addSentimentData() {
-    let count = 0;
-    for (let key in this.tweetsHash) {
-      APIUtil.fetchSentiments(this.tweetsHash[key]['body'])
-        .then(sentimentData => {
+  addSentimentData(idx, keys) {
+    APIUtil.fetchSentiments(this.tweetsHash[keys[idx]]['body'])
+      .then(sentimentData => {
+        let toneCategories = sentimentData.document_tone.tone_categories;
+        this.addSentimentDataToOneTweet(keys[idx], toneCategories);
 
-          this.addSentimentDataToOneTweet(key, sentimentData.document_tone.tone_categories)
-
-          count++;
-          if (count === this.tweets.length) {
-            this.displaySentimentData();
-            this.displayLineGraphs();
-          }
-      });
-    }
+        if (idx < keys.length - 1) {
+          this.addSentimentData(idx + 1, keys);
+        } else {
+          this.displaySentimentData();
+          this.displayLineGraphs();
+        }
+    });
   }
 
   addSentimentDataToOneTweet(key, toneCategories) {
