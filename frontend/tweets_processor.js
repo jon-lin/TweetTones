@@ -76,15 +76,10 @@ class TweetsProcessor {
     toneCategories.forEach(toneCategory => {
       setTweetsHash[toneCategory.category_id] = {};
       let currentToneCategory = setTweetsHash[toneCategory.category_id];
+
       toneCategory.tones.forEach(tonesObj => {
-        if (tonesObj.tone_id.match(/_big5/)) {
-          tonesObj.tone_id = tonesObj.tone_id.slice(0, -5);
-        }
-
-        if (tonesObj.tone_id === 'emotional_range') {
-          tonesObj.tone_id = 'emotional range';
-        }
-
+        tonesObj.tone_id = tonesObj.tone_id.replace('_big5', '');
+        tonesObj.tone_id = tonesObj.tone_id.replace('_', ' ');
         currentToneCategory[tonesObj.tone_id] = tonesObj.score;
       });
     });
