@@ -1,11 +1,7 @@
 export const APIUtil = {
 
   fetchTweets: (twitter_user) => (
-    $.ajax({
-      url: "tweets/index",
-      method: "GET",
-      data: {twitter_user}
-    })
+    $.ajax('/tweets', { data: { screen_name: twitter_user } })
   ),
 
   fetchSentiments: (input) => (
