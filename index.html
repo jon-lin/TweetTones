@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TweetTones</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>window.twttr = (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+      if (d.getElementById(id)) return t;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+
+      t._e = [];
+      t.ready = function(f) {
+        t._e.push(f);
+      };
+
+      return t;
+    }(document, "script", "twitter-wjs"));</script>
+
+    <script type="text/javascript" src='./app/assets/javascripts/bundle.js'></script>
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <script type="text/javascript" src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
+  </head>
+
+  <body>
+
+    <div id="navbar">
+      <div>
+        <a href="https://www.jon-lin.com/" target="_blank">Built by Jon Lin</a>
+        <a class="noteOnScores" href="https://www.ibm.com/watson/developercloud/doc/tone-analyzer/understand-tone.html" target="_blank">(Note on Scores: < .5 = not likely present, > .5 = likely present, > .75 = very likely present)</a>
+      </div>
+      <div>
+        <button class="searchAgainButton">Look Up Another Twitter User</button>
+        <a href="https://github.com/jclin2013/TweetTones" target="_blank">Github</a>
+        <a href="https://www.linkedin.com/in/jclin2013/" target="_blank">LinkedIn</a>
+        <a href="https://www.ibm.com/watson/developercloud/tone-analyzer.html" target="_blank">More About IBM Watson's Tone Analyzer</a>
+      </div>
+    </div>
+
+    <div class='tweets-carousel-container'>
+    </div>
+
+    <div id="replaceSentiment"></div>
+
+    <div class="all-barcharts">
+      <canvas id="emotion-tone-barchart" width="500" height="400"></canvas>
+      <canvas id="language-tone-barchart" width="500" height="400"></canvas>
+      <canvas id="social-tone-barchart" width="500" height="400"></canvas>
+    </div>
+
+    <div class="all-linecharts">
+      <div id='emotion-linechart-container'>
+        <canvas id="emotion-linechart"></canvas>
+      </div>
+    </div>
+
+    <div id="modals-container">
+    </div>
+
+    <script type="text/javascript" src='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js'></script>
+  </body>
+</html>
