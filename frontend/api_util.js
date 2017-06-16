@@ -5,11 +5,12 @@ export const APIUtil = {
   ),
 
   fetchSentiments: (input) => (
-    $.ajax({
-      url: "sentiments/index",
-      method: "GET",
-      data: {input}
-    })
+    $.ajax('/sentiments', { data: { inputText: input } })
+  //   $.ajax({
+  //     url: "sentiments/index",
+  //     method: "GET",
+  //     data: {input}
+  //   })
   )
 
 };

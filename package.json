@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "css-loader": "^0.28.4",
+    "nodemon": "^1.11.0",
     "style-loader": "^0.18.2"
   },
   "engines": {

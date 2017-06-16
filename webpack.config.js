@@ -4,7 +4,8 @@ module.exports = {
   context: __dirname,
   entry: "./frontend/tweet_tones.js",
   output: {
-    path: path.join(__dirname, 'app', 'assets', 'javascripts'),
+    // path: path.join(__dirname, 'app', 'assets', 'javascripts'),
+    path: path.join(__dirname),
     filename: "bundle.js",
     devtoolModuleFilenameTemplate: '[resourcePath]',
     devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]'
