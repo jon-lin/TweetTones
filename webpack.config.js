@@ -33,7 +33,6 @@ module.exports = {
     fs: "empty"
   },
   resolve: {
-    extensions: ['.js', '*'],
-    modulesDirectories: ['node_modules']
+    extensions: ['.js', '*']
   }
 };
