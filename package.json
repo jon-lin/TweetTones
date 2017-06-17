@@ -16,11 +16,12 @@
     "modal-js": "^3.0.0",
     "request": "^2.81.0",
     "slick-carousel": "^1.6.0",
-    "webpack": "^2.5.1"
+    "webpack": "^2.5.1",
+    "css-loader": "^0.28.4",
+    "style-loader": "^0.18.2"
   },
   "devDependencies": {
     "css-loader": "^0.28.4",
-    "nodemon": "^1.11.0",
     "style-loader": "^0.18.2"
   },
   "engines": {
