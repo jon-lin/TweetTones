@@ -186,17 +186,26 @@ body > div.tweets-carousel-container.slick-initialized.slick-slider > div {
 min-width: 400px;
 }
 
-.all-barcharts {
+/*.all-barcharts {
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
-}
+}*/
 
-.all-barcharts > * {
+/*.all-barcharts > * {
 max-height: 400px;
 max-width: 500px;
 margin: 15px;
 border-radius: 10px;
+}*/
+
+.barcharts-carousel-container {
+  height: 400px;
+  width: 500px;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 40px;
+  width: 40%;
 }
 
 .all-linecharts {
