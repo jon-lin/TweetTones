@@ -2,7 +2,7 @@ var path = require("path");
 
 module.exports = {
   context: __dirname,
-  entry: "./frontend/tweet_tones.js",
+  entry: "./lib/javascripts/tweet_tones.js",
   output: {
     path: path.join(__dirname, 'lib', 'assets'),
     filename: "bundle.js",
