@@ -182,12 +182,6 @@ top: calc(50% - 111px);
 background-color: #387A9A;
 }
 
-.slick-slide {
-/*text-align: center;*/
-/*color: #419be0;*/
-/*background: white;*/
-}
-
 body > div.tweets-carousel-container.slick-initialized.slick-slider > div {
 min-width: 400px;
 }
