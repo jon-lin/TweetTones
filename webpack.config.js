@@ -4,7 +4,7 @@ module.exports = {
   context: __dirname,
   entry: "./lib/javascripts/tweet_tones.js",
   output: {
-    path: path.join(__dirname, 'lib', 'assets'),
+    path: path.join(__dirname, 'lib', 'javascripts'),
     filename: "bundle.js",
     devtoolModuleFilenameTemplate: '[resourcePath]',
     devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]'
