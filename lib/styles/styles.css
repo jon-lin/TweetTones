@@ -186,24 +186,16 @@ body > div.tweets-carousel-container.slick-initialized.slick-slider > div {
 min-width: 400px;
 }
 
-/*.all-barcharts {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-}*/
-
-/*.all-barcharts > * {
-max-height: 400px;
-max-width: 500px;
-margin: 15px;
-border-radius: 10px;
-}*/
-
 #emotion-tone-barchart, #social-tone-barchart, #language-tone-barchart {
   max-height: 450px;
   max-width: 600px;
   border-radius: 10px;
 }
+
+/*.barcharts-carousel-container canvas {
+  height: 450px;
+  width: 600px;
+}*/
 
 .barcharts-carousel-container {
   margin: 0 auto;
@@ -211,9 +203,9 @@ border-radius: 10px;
   width: 40%;
 }
 
-.barcharts-carousel-container > * {
+/*.barcharts-carousel-container > * {
   margin: 10px;
-}
+}*/
 
 .all-linecharts {
   display: flex;
