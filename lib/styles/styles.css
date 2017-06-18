@@ -26,160 +26,160 @@ html {
 }
 
 #modals-container {
- position: absolute;
- z-index: -1;
- top: 0;
- height: 100vh;
- width: 100%;
- background-color: transparent;
- display: flex;
- justify-content: center;
- opacity: 0;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
 }
 
 #modals-container.modal-container-active {
- opacity: 1;
- transition: opacity 1000ms linear;
- z-index: 1;
+  opacity: 1;
+  transition: opacity 1000ms linear;
+  z-index: 1;
 }
 
 .splash-modal {
- opacity: 0;
- transition: opacity 500ms linear;
- position: absolute;
- /*z-index: 2;*/
- height: 650px;
- width: 500px;
- background-color: #6AB2D5;
- margin-top: 100px;
- border-radius: 15px;
+  opacity: 0;
+  transition: opacity 500ms linear;
+  position: absolute;
+  /*z-index: 2;*/
+  height: 650px;
+  width: 500px;
+  background-color: #6AB2D5;
+  margin-top: 100px;
+  border-radius: 15px;
 }
 
 .splash-modal.modal-active {
- visibility: visible;
- opacity: 1;
- position: absolute;
- /*z-index: 2;*/
- height: 650px;
- width: 500px;
- background-color: #6AB2D5;
- margin-top: 100px;
- border-radius: 15px;
- transition: opacity 1000ms linear;
+  visibility: visible;
+  opacity: 1;
+  position: absolute;
+  /*z-index: 2;*/
+  height: 650px;
+  width: 500px;
+  background-color: #6AB2D5;
+  margin-top: 100px;
+  border-radius: 15px;
+  transition: opacity 1000ms linear;
 }
 
 .splashLogo {
- position: absolute;
- top: 130px;
- left: 105px;
- height: 220px;
- text-align: center;
+  position: absolute;
+  top: 130px;
+  left: 105px;
+  height: 220px;
+  text-align: center;
 }
 
 .splash-modal .inputSection {
- display: flex;
- flex-direction: column;
- position: absolute;
- bottom: 30px;
- width: 100%;
- text-align: center;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  text-align: center;
 }
 
 .splash-modal .customInput {
- display: flex;
- flex-direction: column;
- width: 70%;
- align-self: center;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  align-self: center;
 }
 
 .splash-modal input {
- border: 1px solid lightgray;
- margin-top: 5px;
- padding: 7px;
+  border: 1px solid lightgray;
+  margin-top: 5px;
+  padding: 7px;
 }
 
 .splash-modal button {
- margin-top: 8px;
- background-color: white;
- color: black;
- text-align: center;
- padding: 3px;
- cursor: pointer;
- font-size: 16px;
- border-radius: 3px;
- border: 0.1px solid lightgray;
+  margin-top: 8px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 0.1px solid lightgray;
 }
 
 .splash-modal button:hover {
- background-color: gray;
+  background-color: gray;
 }
 
 .splash-modal .splashTitle {
- font-size: 60px;
- text-align: center;
- margin-top: 10px;
+  font-size: 60px;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .splash-modal .splashSubtitle {
- text-align: center;
+  text-align: center;
 }
 
 .splash-modal .lineforOR {
-display: flex;
-justify-content: center;
-margin: 8px;
+  display: flex;
+  justify-content: center;
+  margin: 8px;
 }
 
 .splash-modal .lineforOR .line {
-background: rgba(255,255,255,0.2);
-width: 150px;
-height: 1px;
-display: block;
-position: relative;
-top: 11.5px;
-margin-left: 10px;
-margin-right: 10px;
+  background: rgba(255,255,255,0.2);
+  width: 150px;
+  height: 1px;
+  display: block;
+  position: relative;
+  top: 11.5px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .splash-modal .demo-buttons {
-display: flex;
-width: 380px;
-align-self: center;
+  display: flex;
+  width: 380px;
+  align-self: center;
 }
 
 .splash-modal .demo-buttons > * > * {
-width: 100px;
+  width: 100px;
 }
 
 .tweets-carousel-container {
-margin: 0 auto;
-padding: 40px;
-width: 40%;
+  margin: 0 auto;
+  padding: 40px;
+  width: 40%;
 }
 
 .errorMessage {
-background-color: red;
-font-size: 12px;
+  background-color: red;
+  font-size: 12px;
 }
 
 #spinner {
-position: absolute;
-top: 0;
-left: 0;
-height: 100vh;
-width: 100%;
-background-color: #387A9A;
-z-index: 100;
-display: flex;
-justify-content: center;
-align-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: #387A9A;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 #spinner img {
-position: absolute;
-left: calc(50% - 111px);
-top: calc(50% - 111px);
-background-color: #387A9A;
+  position: absolute;
+  left: calc(50% - 111px);
+  top: calc(50% - 111px);
+  background-color: #387A9A;
 }
 
 .tweets-carousel-container .slick-slider {
@@ -226,31 +226,32 @@ background-color: #387A9A;
 }
 
 #emotion-linechart {
-max-width: 800px;
-max-height: 600px;
+  max-width: 800px;
+  max-height: 600px;
+  border-radius: 10px;
 }
 
 #navbar {
-display: flex;
-justify-content: space-between;
-margin-top: 10px;
-min-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  min-width: 1200px;
 }
 
 #navbar > * > * {
-font-size: 14px;
-border: 1px solid rgba(255,255,255,0.2);
-padding: 3px;
-border-radius: 8px;
-margin-right: 5px;
+  font-size: 14px;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 3px;
+  border-radius: 8px;
+  margin-right: 5px;
 }
 
 #navbar .noteOnScores {
-border: none;
+  border: none;
 }
 
 #navbar > * > *:hover:not(.noteOnScores) {
-border: 1px solid rgba(255,255,255,0.8);
+  border: 1px solid rgba(255,255,255,0.8);
 }
 
 /*#navbar div:last-child > * {
@@ -258,7 +259,7 @@ margin-right: 10px;
 }*/
 
 #navbar > * {
-margin-left: 5px;
+  margin-left: 5px;
 }
 
 /*#navbar div:first-child a:last-child {
