@@ -223,9 +223,12 @@ html {
 }
 
 #emotion-linechart {
-  max-width: 900px;
-  max-height: 650px;
+  width: 1200px;
+  height: 700px;
+  /*max-width: 950px;
+  max-height: 700px;*/
   border-radius: 10px;
+  margin-bottom: 40px;
 }
 
 #navbar {
@@ -251,17 +254,9 @@ html {
   border: 1px solid rgba(255,255,255,0.8);
 }
 
-/*#navbar div:last-child > * {
-margin-right: 10px;
-}*/
-
 #navbar > * {
   margin-left: 5px;
 }
-
-/*#navbar div:first-child a:last-child {
-margin-left: 15px;
-}*/
 
 /*some possible future modal setttings*/
 
