@@ -182,8 +182,16 @@ top: calc(50% - 111px);
 background-color: #387A9A;
 }
 
-body > div.tweets-carousel-container.slick-initialized.slick-slider > div {
-min-width: 400px;
+.tweets-carousel-container .slick-slider {
+  min-width: 535px;
+}
+
+.tweets-carousel-container .slick-slider > div {
+  min-width: 400px;
+}
+
+.twitter-tweet.twitter-tweet-rendered {
+  margin: 0 auto;
 }
 
 #emotion-tone-barchart, #social-tone-barchart, #language-tone-barchart {
