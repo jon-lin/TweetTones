@@ -199,19 +199,26 @@ margin: 15px;
 border-radius: 10px;
 }*/
 
-.barcharts-carousel-container {
-  height: 400px;
-  width: 500px;
+#emotion-tone-barchart, #social-tone-barchart, #language-tone-barchart {
+  max-height: 450px;
+  max-width: 600px;
   border-radius: 10px;
+}
+
+.barcharts-carousel-container {
   margin: 0 auto;
-  padding: 40px;
+  padding: 0px 40px 40px 40px;
   width: 40%;
 }
 
+.barcharts-carousel-container > * {
+  margin: 10px;
+}
+
 .all-linecharts {
-display: flex;
-justify-content: center;
-flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .all-linecharts > * {
