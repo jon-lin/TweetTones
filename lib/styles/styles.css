@@ -216,15 +216,9 @@ html {
   margin-bottom: 50px;
 }
 
-.all-linecharts {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
 #emotion-linechart {
-  width: 900px;
-  height: 700px;
+  width: 1100px;
+  height: 550px;
   border-radius: 10px;
   margin-bottom: 40px;
 }
@@ -255,6 +249,8 @@ html {
 #navbar > * {
   margin-left: 5px;
 }
+
+
 
 /*some possible future modal setttings*/
 
