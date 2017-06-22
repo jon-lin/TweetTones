@@ -259,6 +259,10 @@ html {
     font-size: 12px;
 }
 
+.tooltipContainer > * {
+  margin-bottom: 8px;
+}
+
 .tooltipContainer .emotionScoreContainer .littleEmotionSquare {
     height: 20px;
     width: 20px;
