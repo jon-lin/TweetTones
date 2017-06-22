@@ -19,6 +19,10 @@ button, article, footer, small {
 
 /* --- MY CSS BELOW --- */
 
+body.spinning {
+  overflow: hidden;
+}
+
 .content-container {
   display: flex;
   flex-direction: column;
@@ -259,7 +263,7 @@ html {
     font-size: 12px;
 }
 
-.tooltipContainer > * {
+.tooltipContainer > *:not(:last-child) {
   margin-bottom: 8px;
 }
 
@@ -270,6 +274,10 @@ html {
 
 .tooltipContainer .emotionScoreContainer {
     display: flex;
+}
+
+.tooltipContainer .emotionScoreContainer > * {
+    margin-right: 5px;
 }
 
 /*some possible future modal setttings*/
