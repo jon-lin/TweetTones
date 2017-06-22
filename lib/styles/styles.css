@@ -46,6 +46,7 @@ html {
   background-color: transparent;
   display: flex;
   justify-content: center;
+  align-items: center;
   opacity: 0;
 }
 
@@ -58,24 +59,20 @@ html {
 .splash-modal {
   opacity: 0;
   transition: opacity 500ms linear;
-  position: absolute;
-  /*z-index: 2;*/
+  position: relative;
   height: 650px;
   width: 500px;
   background-color: #6AB2D5;
-  margin-top: 100px;
   border-radius: 15px;
 }
 
 .splash-modal.modal-active {
   visibility: visible;
   opacity: 1;
-  position: absolute;
-  /*z-index: 2;*/
+  position: relative;
   height: 650px;
   width: 500px;
   background-color: #6AB2D5;
-  margin-top: 100px;
   border-radius: 15px;
   transition: opacity 1000ms linear;
 }
