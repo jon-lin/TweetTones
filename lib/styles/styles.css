@@ -277,6 +277,12 @@ html {
     margin-right: 5px;
 }
 
+.chartSeparatorLine {
+    height: 6px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    margin-bottom: 50px;
+}
 /*some possible future modal setttings*/
 
 /*.modals-container {
