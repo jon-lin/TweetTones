@@ -215,9 +215,8 @@ html {
 
 .barcharts-carousel-container {
   margin: 0 auto;
-  padding: 0px 40px 0px 40px;
+  padding: 0px 40px 0px 50px;
   width: 50%;
-  margin-bottom: 50px;
 }
 
 #emotion-linechart {
