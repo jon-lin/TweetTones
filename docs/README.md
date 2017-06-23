@@ -1,8 +1,8 @@
-## Tweet Tones
+## TweetTones
 
 ### Background
 
-Tweet Tones is a data visualization web app that displays a sentiment analysis of a Twitter user's most recent tweets.
+TweetTones is a data visualization web app that displays a sentiment analysis of a Twitter user's most recent tweets.
 
 Written in JavaScript and HTML5, the app uses multiple APIs and web technologies to provide a clean interface for looking at tweet analyses.
 
@@ -17,7 +17,7 @@ Users will be able to:
 
 This project will also include:
 
-- [ ] An "About" modal providing more info about IBM Watson's Tone Analyzer and Tweet Tones
+- [ ] An "About" modal providing more info about IBM Watson's Tone Analyzer and TweetTones
 - [ ] A production README
 
 Bonuses:
