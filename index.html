@@ -33,7 +33,7 @@
       <div id="navbar">
         <div>
           <a href="https://www.jon-lin.com/" target="_blank">Built by Jon Lin</a>
-          <a class="noteOnScores" href="https://www.ibm.com/watson/developercloud/doc/tone-analyzer/understand-tone.html" target="_blank">(Note on Scores: < .5 = not likely present, > .5 = likely present, > .75 = very likely present)</a>
+          <a class="noteOnScores" href="https://www.ibm.com/watson/developercloud/doc/tone-analyzer/understand-tone.html" target="_blank"></a>
         </div>
         <div>
           <button class="searchAgainButton">Look Up Another Twitter User</button>
@@ -44,13 +44,15 @@
       </div>
 
       <div class='content-container'>
-        <div class='tweets-carousel-container'>
-        </div>
 
-        <div class="barcharts-carousel-container">
-          <div><canvas id="emotion-tone-barchart"></canvas></div>
-          <div><canvas id="language-tone-barchart"></canvas></div>
-          <div><canvas id="social-tone-barchart"></canvas></div>
+        <div class="top-dashboard">
+          <div id='twitter-timeline-container'></div>
+
+          <div class="barcharts-container">
+            <canvas id="emotion-tone-barchart"></canvas>
+            <canvas id="language-tone-barchart"></canvas>
+            <canvas id="social-tone-barchart"></canvas>
+          </div>
         </div>
 
         <div class="all-linecharts">

@@ -28,7 +28,7 @@ body.notyetloaded {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 1360px;
+  width: 100%;
 }
 
 html {
@@ -160,11 +160,11 @@ html {
   width: 100px;
 }
 
-.tweets-carousel-container {
+/*.tweets-carousel-container {
   margin: 0 auto;
   padding: 40px;
   width: 40%;
-}
+}*/
 
 .errorMessage {
   background-color: red;
@@ -194,30 +194,30 @@ html {
   padding: 15px;
 }
 
-.tweets-carousel-container .slick-slider {
+/*.tweets-carousel-container .slick-slider {
   min-width: 535px;
 }
 
 .tweets-carousel-container .slick-slider > div {
   min-width: 400px;
-}
+}*/
 
-.twitter-tweet.twitter-tweet-rendered {
+/*.twitter-tweet.twitter-tweet-rendered {
   margin: 0 auto;
-}
+}*/
 
-#emotion-tone-barchart, #social-tone-barchart, #language-tone-barchart {
+/*#emotion-tone-barchart, #social-tone-barchart, #language-tone-barchart {
   height: 450px;
   width: 600px;
   border-radius: 10px;
   margin: 0 auto;
-}
+}*/
 
-.barcharts-carousel-container {
+/*.barcharts-carousel-container {
   margin: 0 auto;
   padding: 0px 40px 0px 50px;
   width: 50%;
-}
+}*/
 
 #emotion-linechart {
   width: 900px;
@@ -230,7 +230,7 @@ html {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  min-width: 1200px;
+  /*min-width: 1200px;*/
 }
 
 #navbar > * > * {
@@ -285,6 +285,66 @@ html {
     background: rgba(255, 255, 255, 0.6);
     margin-bottom: 50px;
 }
+
+/*new CSS for styling revamp*/
+
+.top-dashboard {
+    display: flex;
+    justify-content: center;
+    max-width: 1060px;
+    width: 100%;
+}
+
+#twitter-timeline-container {
+    width: 45%;
+    margin: 20px 20px 20px 0px;
+    border-radius: 10px;
+    overflow: scroll;
+}
+
+.barcharts-container {
+    width: 45%;
+}
+
+.barcharts-container > * {
+    border-radius: 10px;
+    margin: 20px 20px 20px 0px;
+}
+
+@media only screen and (max-width: 600px) {
+    .top-dashboard {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #twitter-timeline-container {
+        width: 90%;
+        margin: 20px 0 0 0;
+    }
+
+    .barcharts-container {
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin: 0;
+    }
+}
+
+/*@media only screen and (max-width: 1070px) {
+    .barcharts-carousel-container > * {
+       font-size: 50px;
+    }
+}*/
+
+
+/* #emotion-linechart {
+    display: none !important;
+}
+
+.chartSeparatorLine {
+    display: none;
+} */
 
 /*some possible future modal setttings*/
 
