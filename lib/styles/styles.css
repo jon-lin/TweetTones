@@ -28,12 +28,12 @@ body.notyetloaded {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 85%;
+  margin: 0 auto;
 }
 
 .content-container > * {
   max-width: 1060px;
-  min-width: 575px;
 }
 
 html {
@@ -217,7 +217,6 @@ html {
 }
 
 #emotion-linechart {
-  /*width: calc(90% + 20px) !important;*/
   height: 450px;
   border-radius: 10px;
   margin-bottom: 40px;
@@ -227,7 +226,6 @@ html {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  /*min-width: 1200px;*/
 }
 
 #navbar > * > * {
@@ -300,7 +298,16 @@ html {
     margin: 20px 20px 20px 0px;
 }
 
-@media only screen and (max-width: 600px) {
+.tooSmallNotification {
+  height: 30px;
+  text-align: center;
+  border: 1px solid white;
+  line-height: 26px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 650px) {
     .top-dashboard {
         flex-direction: column;
         align-items: center;
@@ -319,7 +326,21 @@ html {
         margin: 0;
     }
 
+    .barcharts-container > * {
+        border-radius: 10px;
+        margin: 20px 0 0 0;
+    }
+
+    .barcharts-container > *:last-child {
+      margin-bottom: 20px;
+    }
+
+    .all-linecharts {
+      width: 90%;
+    }
+
     #emotion-linechart {
       /*width: 90% !important;*/
+      display: none !important;
     }
 }
