@@ -171,7 +171,7 @@ html {
   font-size: 12px;
 }
 
-#spinner {
+.spinner {
   position: absolute;
   top: 0;
   left: 0;
@@ -185,13 +185,25 @@ html {
   align-items: center;
 }
 
-#spinner img {
+.spinner img {
   background-color: #387A9A;
 }
 
-#spinner #loadData {
+.spinner .loadDataText {
   font-size: 12px;
   padding: 15px;
+}
+
+.spinner.linecharts {
+    background-color: rgba(56, 122, 154, 0.4);
+    height: 100%;
+    justify-content: flex-start;
+}
+
+.spinner.linecharts img {
+    background-color: transparent;
+    height: 70px;
+    margin-top: 50px;
 }
 
 /*.tweets-carousel-container .slick-slider {
@@ -218,6 +230,10 @@ html {
   padding: 0px 40px 0px 50px;
   width: 50%;
 }*/
+
+.all-linecharts {
+  position: relative;
+}
 
 #emotion-linechart {
   width: 900px;
