@@ -217,7 +217,7 @@ html {
 }
 
 #emotion-linechart {
-  width: calc(90% + 20px) !important;
+  /*width: calc(90% + 20px) !important;*/
   height: 450px;
   border-radius: 10px;
   margin-bottom: 40px;
@@ -280,13 +280,13 @@ html {
 
 .top-dashboard {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
 }
 
 #twitter-timeline-container {
-    width: 45%;
-    margin: 20px 20px 20px 0px;
+    width: 52%;
+    margin: 20px 0 20px 0;
     border-radius: 10px;
     overflow: scroll;
 }
@@ -320,6 +320,6 @@ html {
     }
 
     #emotion-linechart {
-      width: 90% !important;
+      /*width: 90% !important;*/
     }
 }
