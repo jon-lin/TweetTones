@@ -31,6 +31,11 @@ body.notyetloaded {
   width: 100%;
 }
 
+.content-container > * {
+  max-width: 1060px;
+  min-width: 575px;
+}
+
 html {
   background-color: #387A9A;
   color: white;
@@ -202,10 +207,17 @@ html {
 
 .all-linecharts {
   position: relative;
+  width: 100%;
+}
+
+#emotion-linechart-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 #emotion-linechart {
-  width: 900px;
+  width: calc(90% + 20px) !important;
   height: 450px;
   border-radius: 10px;
   margin-bottom: 40px;
@@ -269,7 +281,6 @@ html {
 .top-dashboard {
     display: flex;
     justify-content: center;
-    max-width: 1060px;
     width: 100%;
 }
 
@@ -306,5 +317,9 @@ html {
         justify-content: center;
         flex-direction: column;
         margin: 0;
+    }
+
+    #emotion-linechart {
+      width: 90% !important;
     }
 }
