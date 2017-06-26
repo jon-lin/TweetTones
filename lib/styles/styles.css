@@ -237,7 +237,7 @@ html {
   margin-bottom: 40px;
 }
 
-#navbar {
+/*#navbar {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
@@ -261,6 +261,119 @@ html {
 
 #navbar > * {
   margin-left: 5px;
+}*/
+
+#navbar {
+  height: 50px;
+  background-color: rgba(0,0,0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.navbarLogoAndText {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: default;
+}
+
+.navbarLogo {
+  height: 25px;
+  margin-right: 5px;
+}
+
+.navbarText {
+  font-size: 30px;
+}
+
+.navbarHamburgerContainer {
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  border: 1px solid green;
+}
+
+.fa-bars {
+  position: absolute;
+  top: 8px;
+  right: 0;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.fa-bars:hover, .fa-bars.selected {
+  color: rgb(42, 162, 239);
+}
+
+.menuDropdownMenu {
+  position: absolute;
+  top: 65px;
+  right: 0;
+  width: 210px;
+  z-index: 50;
+  background-color: rgba(0,0,0, 0.8);
+  padding: 10px;
+  border-radius: 10px 0 10px 10px;
+}
+
+.arrow-up {
+  position: absolute;
+  width: 0;
+  height: 0;
+  right: 0px;
+  top: 50px;
+  z-index: 51;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid rgba(0,0,0, 0.8);
+}
+
+.appOptionsContainer {
+  border-bottom: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+}
+
+.appOptionsLinks {
+  display: flex;
+  flex-direction: column;
+}
+
+.appOptionsLinks > * {
+  margin-top: 5px;
+}
+
+.appOptionsLinks > *:first-child {
+  margin-top: 10px;
+}
+
+.appOptionsLinks > *:last-child {
+  margin-bottom: 10px;
+}
+
+.aboutThisAppContainer {
+  margin-top: 8px;
+  margin-left: 5px;
+}
+
+.aboutThisAppLinks {
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutThisAppLinks > * {
+  margin-top: 5px;
+}
+
+.aboutThisAppLinks > *:first-child {
+  margin-top: 10px;
+}
+
+.aboutThisAppLinks > *:last-child {
+  margin-bottom: 5px;
 }
 
 #chartjs-tooltip .tooltipContainer {

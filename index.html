@@ -5,6 +5,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="jquery.popuptooltip.min.js"></script>
     <link rel="stylesheet" href="jquery.popuptooltip.min.css">
+    <script src="https://use.fontawesome.com/edb8528b4a.js"></script>
 
     <script>window.twttr = (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0],
@@ -30,7 +31,45 @@
 
   <body>
       <div id="navbar">
-        <div>
+        <div class="navbarLogoAndText">
+          <img class="navbarLogo" src='tweettones.png'></img>
+          <text class="navbarText">TweetTones</text>
+        </div>
+
+        <div class="navbarHamburgerContainer">
+
+          <i class="fa fa-bars" aria-hidden="true"></i>
+
+          <div class="arrow-up"></div>
+
+          <div class="menuDropdownMenu">
+
+            <div class="appOptionsContainer">
+              <div>APP OPTIONS</div>
+              <div class="appOptionsLinks">
+                <div id="takeATourButton">—  Show App Intro Tips</div>
+                <div id="fetchMoreTweetsButton">—  Fetch More Tweets</div>
+                <div id="lookUpAnotherTwitterUserButton">—  Pick Another Twitter User</div>
+                <a href="https://www.ibm.com/watson/developercloud/tone-analyzer.html" target="_blank">—  More About IBM Watson</a>
+              </div>
+            </div>
+
+            <div class="aboutThisAppContainer">
+              <div>BUILT BY JON LIN</div>
+              <div class="aboutThisAppLinks">
+                <a href="https://drive.google.com/file/d/0B2wkz0QyfcNAem95ZGdEUEFnMFU/view?usp=sharing" target="_blank">—  Resume</a>
+                <a href="https://www.jon-lin.com/" target="_blank">—  Portfolio</a>
+                <a href="https://github.com/jclin2013/TweetTones" target="_blank">—  Github</a>
+                <a href="https://www.linkedin.com/in/jclin2013/" target="_blank">—  LinkedIn</a>
+                <a href="https://angel.co/jclin2013" target="_blank">—  AngelList</a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- <div>
           <a href="https://www.jon-lin.com/" target="_blank">Built by Jon Lin</a>
           <a class="noteOnScores" href="https://www.ibm.com/watson/developercloud/doc/tone-analyzer/understand-tone.html" target="_blank"></a>
         </div>
@@ -39,7 +78,7 @@
           <a href="https://github.com/jclin2013/TweetTones" target="_blank">Github</a>
           <a href="https://www.linkedin.com/in/jclin2013/" target="_blank">LinkedIn</a>
           <a href="https://www.ibm.com/watson/developercloud/tone-analyzer.html" target="_blank">More About IBM Watson's Tone Analyzer</a>
-        </div>
+        </div> -->
       </div>
 
       <div class='content-container'>
