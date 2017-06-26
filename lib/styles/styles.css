@@ -378,6 +378,7 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     color: white;
     font-size: 12px;
+    box-sizing: border-box;
 }
 
 .tooltipContainer > *:not(:last-child) {
