@@ -237,32 +237,6 @@ html {
   margin-bottom: 40px;
 }
 
-/*#navbar {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-
-#navbar > * > * {
-  font-size: 14px;
-  border: 1px solid rgba(255,255,255,0.2);
-  padding: 3px;
-  border-radius: 8px;
-  margin-right: 5px;
-}
-
-#navbar .noteOnScores {
-  border: none;
-}
-
-#navbar > * > *:hover:not(.noteOnScores) {
-  border: 1px solid rgba(255,255,255,0.8);
-}
-
-#navbar > * {
-  margin-left: 5px;
-}*/
-
 #navbar {
   height: 50px;
   background-color: rgba(0,0,0, 0.5);
@@ -344,6 +318,7 @@ html {
 
 .appOptionsLinks > * {
   margin-top: 5px;
+  cursor: pointer;
 }
 
 .appOptionsLinks > *:first-child {
@@ -374,6 +349,10 @@ html {
 
 .aboutThisAppLinks > *:last-child {
   margin-bottom: 5px;
+}
+
+.appOptionsLinks > *:hover, .aboutThisAppLinks > *:hover {
+  color: #2AA2EF;
 }
 
 #chartjs-tooltip .tooltipContainer {
