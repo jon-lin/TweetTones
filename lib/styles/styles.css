@@ -19,7 +19,29 @@ button, article, footer, small {
 
 /* --- MY CSS BELOW --- */
 
-body.notyetloaded {
+html {
+  background-color: #387A9A;
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  height: 100%;
+}
+
+#mainContainer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+}
+
+#mainContainer.notyetloaded {
   overflow: hidden;
 }
 
@@ -34,12 +56,6 @@ body.notyetloaded {
 
 .content-container > * {
   max-width: 1060px;
-}
-
-html {
-  background-color: #387A9A;
-  color: white;
-  font-family: 'Source Sans Pro', sans-serif;
 }
 
 #modals-container {

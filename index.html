@@ -30,6 +30,8 @@
   </head>
 
   <body>
+    <div id="mainContainer">
+
       <div id="navbar">
         <div class="navbarLogoAndText">
           <img class="navbarLogo" src='tweettones.png'></img>
@@ -47,7 +49,7 @@
             <div class="appOptionsContainer">
               <div>APP OPTIONS</div>
               <div class="appOptionsLinks">
-                <div id="takeATourButton">—  Show App Intro Tips</div>
+                <div id="takeATourButton">—  Replay App Intro Tips</div>
                 <div id="fetchMoreTweetsButton">—  Fetch More Tweets</div>
                 <div id="lookUpAnotherTwitterUserButton">—  Pick Another Twitter User</div>
                 <a href="https://www.ibm.com/watson/developercloud/tone-analyzer.html" target="_blank">—  More About IBM Watson</a>
@@ -68,40 +70,30 @@
           </div>
 
         </div>
-
-        <!-- <div>
-          <a href="https://www.jon-lin.com/" target="_blank">Built by Jon Lin</a>
-          <a class="noteOnScores" href="https://www.ibm.com/watson/developercloud/doc/tone-analyzer/understand-tone.html" target="_blank"></a>
         </div>
-        <div>
-          <button class="searchAgainButton">Look Up Another Twitter User</button>
-          <a href="https://github.com/jclin2013/TweetTones" target="_blank">Github</a>
-          <a href="https://www.linkedin.com/in/jclin2013/" target="_blank">LinkedIn</a>
-          <a href="https://www.ibm.com/watson/developercloud/tone-analyzer.html" target="_blank">More About IBM Watson's Tone Analyzer</a>
-        </div> -->
-      </div>
 
-      <div class='content-container'>
+        <div class='content-container'>
 
-        <div class="top-dashboard">
-          <div id='twitter-timeline-container'></div>
+          <div class="top-dashboard">
+            <div id='twitter-timeline-container'></div>
 
-          <div class="barcharts-container">
-            <canvas id="emotion-tone-barchart"></canvas>
-            <canvas id="language-tone-barchart"></canvas>
-            <canvas id="social-tone-barchart"></canvas>
+            <div class="barcharts-container">
+              <canvas id="emotion-tone-barchart"></canvas>
+              <canvas id="language-tone-barchart"></canvas>
+              <canvas id="social-tone-barchart"></canvas>
+            </div>
+          </div>
+
+          <div class="all-linecharts">
+            <div class="linechart" id='emotion-linechart-container'>
+              <canvas id="emotion-linechart"></canvas>
+            </div>
           </div>
         </div>
 
-        <div class="all-linecharts">
-          <div class="linechart" id='emotion-linechart-container'>
-            <canvas id="emotion-linechart"></canvas>
-          </div>
-        </div>
+      <div id="modals-container">
       </div>
 
-    <div id="modals-container">
     </div>
-
   </body>
 </html>
