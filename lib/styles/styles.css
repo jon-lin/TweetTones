@@ -428,12 +428,12 @@ body {
   line-height: 26px;
   margin-bottom: 20px;
   border-radius: 10px;
+  margin-top: 20px;
 }
 
 .popupTooltip.side-top-left {
   top: 30px;
   left: 45%;
-  background-color: black;
   height: 100px;
 }
 
