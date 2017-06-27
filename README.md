@@ -6,12 +6,10 @@
     </div>
     <div style='width: 565px; margin-right: 20px'>
       <h3>Background</h3>
-
       <p>TweetTones is a data visualization web app that uses IBM Watson's Tone Analyzer to display a sentiment analysis of any Twitter user's most recent tweets. Built with HTML5, CSS3 and JavaScript, the app leverages jQuery and Chart.js to provide a clean interface for examining tweet analyses.</p>
     </div>
     <div style='width: 565px; margin-right: 20px'>
       <h3>Features</h3>
-
       <ul>
         <li>Convenient browsing of any Twitter user's tweet timeline</li>
         <li>Users can load as many tweets as they want, 20 at a time</li>
