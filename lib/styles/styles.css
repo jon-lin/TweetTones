@@ -489,17 +489,9 @@ body {
     }
 
     #emotion-linechart {
-      /*width: 90% !important;*/
       display: none !important;
     }
 }
-
-/*@media only screen and (max-width: 480px) {
-  .splash-modal {
-    height: 100vh !important;
-    width: 100vh !important;
-  }
-}*/
 
 @media only screen and (max-width: 560px) {
     .splash-modal .splashTitle {
