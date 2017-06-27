@@ -21,7 +21,6 @@
       </ul>
     </div>
   </div>
-
   <img src="./lib/assets/TweetTonesSplashPage.png" height="500px">
 </div>
 
