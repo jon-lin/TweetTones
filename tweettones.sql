@@ -5,6 +5,7 @@ CREATE DATABASE tweettones;
 
 CREATE TABLE tweettones (
   id VARCHAR NOT NULL PRIMARY KEY,
+  twitterHandle VARCHAR,
   timestamp VARCHAR,
   body VARCHAR,
   emotion_tone VARCHAR,
@@ -12,9 +13,10 @@ CREATE TABLE tweettones (
   social_tone VARCHAR
 );
 
-INSERT INTO tweettones(id, timestamp, body, emotion_tone, language_tone, social_tone)
+INSERT INTO tweettones(id, twitterHandle, timestamp, body, emotion_tone, language_tone, social_tone)
   VALUES(
     '876558049565188096',
+    '@realDonaldTrump',
     '2017-06-18T21:51:39.000Z',
     'Camp David is a very special place. An honor to have spent the weekend there. Military runs it so well and are so proud of what they do!',
     '{"anger":0.013479,"disgust":0.014383,"fear":0.076519,"joy":0.848637,"sadness":0.053553}',
