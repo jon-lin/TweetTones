@@ -11,10 +11,13 @@
     <div style='width: 565px; margin-right: 20px'>
       <h3>Features</h3>
       <ul>
-        <li>Convenient browsing of any Twitter user's tweet timeline</li>
-        <li>Users can load as many tweets as they want, 20 at a time</li>
+        <li>Convenient browsing of any Twitter user's timeline</li>
+        <li>Auto-loading of new tweets (no refresh needed to see most recent tweets)</li>
+        <li>Users can load as many old tweets as they want, 20 at a time</li>
+        <li>Previously fetched data is persisted to a database for faster load times on revisits</li>
+        <li>All data on the page can be downloaded in JSON or CSV format</li>
         <li>Bar charts auto-update when a tweet is clicked on</li>
-        <li>Line chart auto-updates when more tweets are fetched</li>
+        <li>Line chart auto-updates whenever more tweets are fetched</li>
         <li>Error handling if a Twitter screenname isn't found
         <li>Custom line chart tooltips identify tweet and date & time</li>
         <li>Responsive to all computer browser window sizings</li>
@@ -30,3 +33,7 @@
 <img src="./lib/assets/TweetTonesBarChartsDemo.gif">
 
 <img src="./lib/assets/TweetTonesLineChartDemo.gif">
+
+<img src="./lib/assets/TweetTonesCSVDemo.gif">
+
+<img src="./lib/assets/TweetTonesNewTweetAutoUpdateDemo.gif">
