@@ -30,10 +30,14 @@
 
 ### GIFs of Chart Interactivity
 
+##When a tweet is clicked on, bar charts update to show its sentiment data
 <img src="./lib/assets/TweetTonesBarChartsDemo.gif">
 
+##Line chart features custom-designed tooltips
 <img src="./lib/assets/TweetTonesLineChartDemo.gif">
 
+##All data on the page can be downloaded in CSV format for use in Excel
 <img src="./lib/assets/TweetTonesCSVDemo.gif">
 
+##When a user tweets something new, the timeline and linechart auto-update
 <img src="./lib/assets/TweetTonesNewTweetAutoUpdateDemo.gif">
