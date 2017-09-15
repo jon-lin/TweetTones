@@ -273,6 +273,41 @@ body {
   /*border: 1px solid black;*/
 }
 
+.legend {
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+  margin: 10px 0px 5px 0px;
+}
+
+.legendCategoryContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.legendCategoryContainer.off:after {
+  position: absolute;
+  left: 0;
+  top: 45%;
+  height: 3px;
+  background: black;
+  content: "";
+  width: 100%;
+  display: block;
+}
+
+.legendCategoryColor {
+  height: 10px;
+  width: 10px;
+  border: 1px solid black;
+  margin-right: 5px;
+}
+
+.legendCategoryLabel {
+  color: black;
+}
+
 #navbar {
   height: 50px;
   background-color: rgba(0,0,0, 0.5);
