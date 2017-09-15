@@ -224,7 +224,7 @@ body {
   padding: 15px;
 }
 
-.spinner.linecharts {
+/*.spinner.linecharts {
     background-color: rgba(56, 122, 154, 0.4);
     height: 100%;
     justify-content: flex-start;
@@ -251,6 +251,25 @@ body {
   height: 450px;
   border-radius: 10px;
   margin-bottom: 40px;
+}*/
+
+.scatterplot-container {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 50px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scatterplot-container.hidden {
+  display: none;
+}
+
+.scatterplot-svg {
+  width: 100%;
+  /*border: 1px solid black;*/
 }
 
 #navbar {
