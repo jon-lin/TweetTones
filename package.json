@@ -14,6 +14,7 @@
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
     "chart.js": "^2.6.0",
+    "d3": "^4.10.2",
     "express": "^4.15.2",
     "html-to-text": "^3.3.0",
     "json2csv": "^3.9.0",
