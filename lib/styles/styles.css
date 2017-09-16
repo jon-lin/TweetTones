@@ -457,7 +457,7 @@ body {
   color: #2AA2EF;
 }
 
-#chartjs-tooltip .tooltipContainer {
+/*#chartjs-tooltip .tooltipContainer {
     width: 200px;
     background: rgba(0,0,0, 0.6);
     padding: 10px;
@@ -482,7 +482,7 @@ body {
 
 .tooltipContainer .emotionScoreContainer > * {
     margin-right: 5px;
-}
+}*/
 
 /*newer CSS for styling revamp*/
 
@@ -520,6 +520,60 @@ body {
   margin-bottom: 20px;
   border-radius: 10px;
   margin-top: 20px;
+}
+
+.tooltipContainer.hidden {
+  display: none;
+}
+
+.tooltipContainer {
+    position: absolute;
+    background-color: white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    width: 200px;
+    background: rgba(0,0,0, 0.6);
+    padding: 10px;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    font-size: 12px;
+    box-sizing: border-box;
+}
+
+.tooltipContainer > *:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.tooltipTweetText {
+  word-wrap: break-word;
+}
+
+.tooltipMiniBarChart {
+  position: relative;
+  top: -3px;
+  display: flex;
+  height: 20px;
+}
+
+.tooltipBarColor {
+  height: 100%;
+}
+
+.tooltipBarContainer {
+  width: 110px;
+  background-color: lightgray;
+  margin-right: 10px;
+}
+
+.tooltipScoreContainer {
+  display: flex;
+  flex-direction: column;
+  font-size: 9px;
 }
 
 .popupTooltip.side-top-left {
