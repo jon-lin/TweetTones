@@ -224,30 +224,30 @@ body {
   padding: 15px;
 }
 
-/*.spinner.linecharts {
+.spinner.scatterplot {
     background-color: rgba(56, 122, 154, 0.4);
     height: 100%;
     justify-content: flex-start;
 }
 
-.spinner.linecharts img {
+.spinner.scatterplot img {
     background-color: transparent;
     height: 70px;
     margin-top: 50px;
 }
 
-.all-linecharts {
+/*.all-linecharts {
   position: relative;
   width: 100%;
-}
+}*/
 
-#emotion-linechart-container {
+/*#emotion-linechart-container {
   width: 100%;
   display: flex;
   justify-content: center;
-}
+}*/
 
-#emotion-linechart {
+/*#emotion-linechart {
   height: 450px;
   border-radius: 10px;
   margin-bottom: 40px;
@@ -262,6 +262,7 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: white;
+  position: relative;
 }
 
 .scatterplot-container.hidden {
@@ -575,7 +576,7 @@ body {
 .popupTooltip.side-top-right {
   top: 20px;
   right: 100px;
-  height: 110px;
+  height: 220px;
 }
 
 @media only screen and (max-width: 650px) {
