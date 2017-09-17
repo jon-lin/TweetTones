@@ -520,6 +520,7 @@ body {
   margin-bottom: 20px;
   border-radius: 10px;
   margin-top: 20px;
+  color: black;
 }
 
 .tooltipContainer.hidden {
@@ -628,12 +629,13 @@ body {
       margin-bottom: 20px;
     }
 
-    .all-linecharts {
+    .scatterplot-container {
+      margin-top: 20px;
       width: 90%;
     }
 
-    #emotion-linechart {
-      display: none !important;
+    .scatterplot-container > *:not(.tooSmallNotification) {
+      display: none;
     }
 }
 
