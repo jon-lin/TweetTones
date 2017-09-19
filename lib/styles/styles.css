@@ -69,7 +69,7 @@ body {
   justify-content: center;
   align-items: center;
   opacity: 0;
-  min-height: 665px;
+  min-height: 568px;
 }
 
 #modals-container.modal-container-active {
@@ -91,7 +91,7 @@ body {
   align-items: center;
   flex-direction: column;
   max-width: 500px;
-  max-height: 690px;
+  min-height: 568px;
 }
 
 .splash-modal.modal-active {
@@ -236,28 +236,10 @@ body {
     margin-top: 50px;
 }
 
-/*.all-linecharts {
-  position: relative;
-  width: 100%;
-}*/
-
-/*#emotion-linechart-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}*/
-
-/*#emotion-linechart {
-  height: 450px;
-  border-radius: 10px;
-  margin-bottom: 40px;
-}*/
-
 .scatterplot-container {
   width: 100%;
   border-radius: 10px;
   margin-bottom: 50px;
-  /*border: 1px solid black;*/
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -271,7 +253,6 @@ body {
 
 .scatterplot-svg {
   width: 100%;
-  /*border: 1px solid black;*/
 }
 
 .grid line {
@@ -285,7 +266,6 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 20px;
-  /*margin-bottom: 25px;*/
 }
 
 .selectToneDropdown {
@@ -579,7 +559,7 @@ body {
   height: 220px;
 }
 
-@media only screen and (max-width: 915px) {
+@media (max-width: 915px) {
     .top-dashboard {
         flex-direction: column;
         align-items: center;
@@ -620,13 +600,14 @@ body {
     }
 }
 
-@media only screen and (max-width: 560px) {
+@media (max-width: 565px) {
     .splash-modal .splashTitle {
       font-size: 50px;
     }
 
     .splash-modal .splashSubtitle {
-        font-size: 12px;
+      font-size: 16px;
+      padding: 0 10px 0 10px;
     }
 
     .splash-modal .submitInput {
@@ -635,19 +616,148 @@ body {
     }
 
     .splash-modal .lineforOR .line {
-        width: 100px;
+      width: 100px;
+      margin-top: 5px;
     }
 
     #ortextidforplainform {
-        font-size: 11px;
-        line-height: 2em;
+      font-size: 16px;
+      line-height: 1.8em;
     }
 
     .splash-modal .demo-buttons {
-        width: 90%;
+      width: 90%;
     }
 
     .splash-modal .demo-buttons > * > * {
-      font-size: 11px;
+      font-size: 13px;
     }
 }
+
+@media (max-width: 415px) {
+  .splash-modal {
+    height: 100%;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .splash-modal .splashTitle {
+    font-size: 50px;
+  }
+
+  .splash-modal .splashSubtitle {
+    font-size: 20px;
+  }
+
+  .splash-modal .inputSection div:first-child {
+    font-size: 20px;
+  }
+
+  #ortextidforplainform {
+    font-size: 18px;
+    line-height: 1.7em;
+  }
+
+  .splash-modal .demo-buttons > * > * {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 320px) {
+  .splash-modal {
+    height: 100%;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .splash-modal .splashTitle {
+    font-size: 50px;
+  }
+
+  .splash-modal .splashSubtitle {
+    font-size: 20px;
+    padding: 0 10px 0 10px;
+  }
+
+  .splash-modal img {
+    height: 170px;
+    width: 200px;
+    margin-top: 20px;
+  }
+
+  .splash-modal .inputSection div:first-child {
+    font-size: 20px;
+  }
+
+  .inputSection input {
+    padding: 0;
+  }
+
+  .splash-modal .submitInput {
+    padding: 10px;
+  }
+
+  .splash-modal .lineforOR .line {
+    width: 100px;
+  }
+
+  #ortextidforplainform {
+    font-size: 14px;
+    line-height: 1.2em;
+  }
+
+  .splash-modal .demo-buttons > * > * {
+    font-size: 12px;
+  }
+}
+
+@media (width: 1024px) and (height: 1366px) {
+  #modals-container {
+    max-height: 800px;
+  }
+}
+
+/*@media (orientation: landscape) {
+  .splash-modal {
+    max-width: none;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .splash-modal .headerText {
+    flex: none;
+    margin-bottom: 20px;
+  }
+
+  .splash-modal .splashLogo, .splash-modal img {
+    height: 0;
+    flex: none;
+  }
+
+  .splash-modal .inputSection {
+    flex: none;
+  }
+
+  .splash-modal .customInput {
+    margin-bottom: 20px;
+  }
+}
+
+@media (orientation: landscape) and (height: 320px) and (width: 568px) {
+  .splash-modal headerText {
+    padding: 0;
+  }
+
+  .splash-modal .splashTitle {
+    font-size: 40px;
+    margin-top: 5px;
+  }
+
+   .splash-modal .splashSubtitle {
+    display: none;
+  }
+
+  .splash-modal .inputSection {
+    margin-top: -12px;
+  }
+}*/
