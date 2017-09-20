@@ -34,11 +34,8 @@
 ### When a tweet is clicked on, the bar charts update to show its sentiment data
 <img src="./lib/assets/TweetTonesBarChartsDemo.gif">
 
-### Line chart features custom-designed tooltips
-<img src="./lib/assets/TweetTonesLineChartDemo.gif">
+### Scatterplot features zoom & pan functionality, tooltips and legend toggling
+<img src="./lib/assets/TweetTonesScatterplotDemo.gif">
 
 ### Data can be downloaded in CSV format for use in Excel or Google Sheets
 <img src="./lib/assets/TweetTonesCSVDemo.gif">
-
-### When a user tweets something new, the timeline and linechart auto-update
-<img src="./lib/assets/TweetTonesNewTweetAutoUpdateDemo.gif">
