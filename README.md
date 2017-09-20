@@ -6,7 +6,7 @@
     </div>
     <div>
       <h2>Background</h2>
-      <p>TweetTones is a data visualization web app that uses IBM Watson's Tone Analyzer to display a sentiment analysis of any Twitter user's most recent tweets. Built with HTML5, CSS3 and JavaScript, the app leverages jQuery and Chart.js to provide a clean interface for examining tweet analyses.</p>
+      <p>TweetTones is a data visualization web app that uses IBM Watson's Tone Analyzer to display a sentiment analysis of any Twitter user's most recent tweets. Built with HTML5, CSS3 and JavaScript, the app leverages jQuery and D3.js to provide a clean interface for examining tweet analyses.</p>
     </div>
     <div style='width: 565px; margin-right: 20px'>
       <h2>Features</h2>
@@ -14,12 +14,13 @@
         <li>Convenient browsing of any Twitter user's timeline</li>
         <li>Auto-loading of new tweets (no refresh needed to see most recent tweets)</li>
         <li>Users can load as many old tweets as they want, 20 at a time</li>
-        <li>Previously fetched data is persisted to a database for faster load times on revisits</li>
+        <li>Previously fetched data are persisted to a database for faster load times on revisits</li>
         <li>All data on the page can be downloaded in JSON or CSV format</li>
         <li>Bar charts auto-update when a tweet is clicked on</li>
-        <li>Line chart auto-updates whenever more tweets are fetched</li>
+        <li>Scatterplot auto-updates whenever more tweets are fetched</li>
+        <li>Users can zoom in on the scatterplot to look at tweets on a minute-by-minute basis</li>
         <li>Error handling if a Twitter screenname isn't found
-        <li>Custom line chart tooltips identify tweet and date & time</li>
+        <li>Custom scatterplot tooltips identify tweet and date & time</li>
         <li>Responsive to all computer browser window sizings</li>
       </ul>
     </div>
