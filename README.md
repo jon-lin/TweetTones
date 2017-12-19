@@ -2,7 +2,7 @@
   <div>
     <div>
       <h1>TweetTones</h1>
-      <button style="background: #6AB2D5; border: none; border-radius: 5px; padding: 6px 6px 6px 6px"><a style="font-size: 18px; color: white; text-decoration: none" href="https://www.tweettones.me/">Live Link</a></button>
+      <button style="background: #6AB2D5; border: none; border-radius: 5px; padding: 6px 6px 6px 6px"><a style="font-size: 18px; color: white; text-decoration: none" href="http://tweettones.herokuapp.com/">Live Link</a></button>
     </div>
     <div>
       <h2>Background</h2>
